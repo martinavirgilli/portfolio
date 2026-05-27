@@ -1,0 +1,26 @@
+{
+  "portfolio": [
+    {
+      "id": "refugio-animales",
+      "titulo": "Sistema de Gestión — Refugio de Animales",
+      "descripcion": "Proyecto final de diplomatura. Sistema web full stack para gestión de animales y adoptantes. Backend en Java con Spring Boot, REST API y autenticación JWT. Base de datos MySQL, Frontend en HTML/CSS/JS, testing con Postman y versionado con Git.",
+      "tipo": "Full Stack",
+      "categoria": "web",
+      "tags": ["Java", "Spring Boot", "REST API", "JWT", "MySQL", "HTML / CSS / JS", "Postman", "Git"],
+      "github_url": "",
+      "preview_url": "",
+      "imagen": "",
+      "destacado": true
+    }
+  ],
+
+  "instrucciones": {
+    "como_agregar_proyecto": "Copiá uno de los bloques de arriba, cambiá el 'id' por algo único, completá los datos reales y guardá el archivo. El portfolio se actualiza solo.",
+    "github_url": "Cuando el repositorio esté público en GitHub, pegá el link acá. El botón aparece automáticamente.",
+    "preview_url": "Si publicaste la web en Netlify, Vercel o GitHub Pages, pegá el link acá. Si no, dejalo vacío.",
+    "imagen": "Guardá una captura del proyecto en 'assets/portfolio/' con el nombre que pongas acá. Tamaño recomendado: 1200x800px.",
+    "tipo": "Etiqueta visible en la tarjeta: Full Stack, Automatización, Bot, Web, Script, etc.",
+    "categoria": "Para los filtros del portfolio: web | automatizacion | bot",
+    "destacado": "Los proyectos con 'destacado: true' aparecen primero."
+  }
+}

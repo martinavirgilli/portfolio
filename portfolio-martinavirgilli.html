@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ── TÍTULO Y META ──────────────────────────────────────────────────── -->
+  <title>Martina Virgilli — Software Developer · Junior Dev</title>
+  <meta name="description"
+        content="Software developer con experiencia en SQL, análisis de datos y desarrollo full stack. Especialización en automatizaciones, Python e IA. Disponible para trabajo remoto.">
+
+  <!-- ── FUENTES GOOGLE ─────────────────────────────────────────────────── -->
+  <!-- Space Grotesk → títulos y headings                                   -->
+  <!-- Inter          → cuerpo de texto                                     -->
+  <!-- JetBrains Mono → elementos técnicos / código                        -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════════════════════════════════════
+       PALETA DE COLORES
+       Basada en la paleta personalizada de Martina.
+       Para cambiar un color, edita SOLO esta sección :root.
+       ══════════════════════════════════════════════════════════════════════ */
+    :root {
+      --fondo-principal:  #262423;   /* Shadow Grey   — fondo base de toda la página  */
+      --fondo-secundario: #301E38;   /* entre Shadow y Midnight — secciones alternas  */
+      --fondo-card:       #3A2B44;   /* Midnight Violet suavizado — tarjetas          */
+      --acento-violeta:   #8350C4;   /* Deep Lilac    — color de acento principal     */
+      --acento-lavanda:   #9B6CD6;   /* Deep Lilac claro — hover y detalles           */
+      --acento-lila:      #C9E0EB;   /* Pale Sky      — texto destacado / etiquetas   */
+      --verde:            #10B981;   /* Verde esmeralda — "activo / disponible"       */
+      --blanco:           #EDF0F7;   /* Blanco frío   — texto principal               */
+      --gris:             #7392B5;   /* Dusty Denim   — texto secundario              */
+      --borde:            rgba(131, 80, 196, 0.22);
+      --gradiente:        linear-gradient(135deg, #8350C4, #7392B5);
+      --gradiente-texto:  linear-gradient(135deg, #C9E0EB, #9B6CD6);
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       RESET Y BASE
+       ══════════════════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--fondo-principal);
+      color: var(--blanco);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Campo estelar de fondo (puntos CSS, no imágenes) ──────────────── */
+    /* Para quitar las estrellas basta con eliminar este bloque body::before */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;                        /* top/right/bottom/left: 0 */
+      background-image:
+        radial-gradient(1px 1px at  8%  18%, rgba(201,224,235,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22%  72%, rgba(201,224,235,0.20) 0%, transparent 100%),
+        radial-gradient(1px 1px at 37%  11%, rgba(201,224,235,0.40) 0%, transparent 100%),
+        radial-gradient(1px 1px at 53%  58%, rgba(201,224,235,0.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 68%  84%, rgba(201,224,235,0.28) 0%, transparent 100%),
+        radial-gradient(1px 1px at 82%  27%, rgba(201,224,235,0.30) 0%, transparent 100%),
+        radial-gradient(1px 1px at 91%  63%, rgba(201,224,235,0.14) 0%, transparent 100%),
+        radial-gradient(1px 1px at 14%  44%, rgba(201,224,235,0.22) 0%, transparent 100%),
+        radial-gradient(2px 2px at 29%  33%, rgba(131, 80,196,0.45) 0%, transparent 100%),
+        radial-gradient(2px 2px at 76%  52%, rgba(115,146,181,0.35) 0%, transparent 100%),
+        radial-gradient(2px 2px at 47%  89%, rgba(131, 80,196,0.28) 0%, transparent 100%),
+        radial-gradient(2px 2px at 63%  15%, rgba(115,146,181,0.25) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Contenedor centrado (max 1100 px) ─────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       TIPOGRAFÍA Y CLASES DE UTILIDAD
+       ══════════════════════════════════════════════════════════════════════ */
+
+    /* Todos los encabezados usan Space Grotesk */
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+
+    /* Texto con degradado violeta → azul */
+    .texto-gradiente {
+      background: var(--gradiente-texto);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Etiquetas / badges ─────────────────────────────────────────────── */
+
+    /* Etiqueta violeta estándar (tecnologías, categorías) */
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(131, 80, 196, 0.12);
+      border: 1px solid rgba(131, 80, 196, 0.28);
+      color: var(--acento-lila);
+      font-size: 0.75rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Etiqueta verde — disponibilidad y estados activos */
+    .tag-verde {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(16, 185, 129, 0.10);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      color: #34D399;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* Texto en fuente monospace — para términos técnicos */
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      color: var(--acento-lila);
+    }
+
+    /* ── Animación de entrada al hacer scroll ───────────────────────────── */
+    /* Agregar clase .fade-in a cualquier elemento para que aparezca suavemente */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Botones reutilizables ──────────────────────────────────────────── */
+
+    /* Botón primario con degradado */
+    .btn-primario {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      background: var(--gradiente);
+      color: var(--blanco);
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: opacity 0.2s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primario:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    /* Botón secundario con borde */
+    .btn-secundario {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border: 1px solid var(--borde);
+      color: var(--blanco);
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, transform 0.2s;
+      background: transparent;
+    }
+    .btn-secundario:hover { border-color: var(--acento-violeta); transform: translateY(-2px); }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       NAVEGACIÓN FIJA
+       Para cambiar los links del nav, edita la lista <ul class="nav-links">
+       ══════════════════════════════════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 14px 0;
+      background: rgba(38, 36, 35, 0.90);  /* --fondo-principal con 90% opacidad */
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Logo del nav: iniciales "MV" con degradado */
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: var(--gradiente);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      flex-shrink: 0;
+      letter-spacing: 0.04em;
+    }
+
+    /* Lista de links de sección */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--gris);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blanco); }
+
+    /* Zona derecha: toggle de idioma + botón contacto + hamburger */
+    .nav-controles {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    /* ── Toggle ES / EN ─────────────────────────────────────────────────── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(131,80,196,0.08);
+      border: 1px solid var(--borde);
+      border-radius: 8px;
+      padding: 4px;
+    }
+    .lang-btn {
+      padding: 4px 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      background: transparent;
+      color: var(--gris);
+      font-family: 'Inter', sans-serif;
+    }
+    .lang-btn.activo {
+      background: var(--acento-violeta);
+      color: var(--blanco);
+    }
+
+    /* CTA de contacto en el nav */
+    .nav-cta {
+      background: var(--gradiente);
+      color: var(--blanco) !important;
+      padding: 7px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* ── Hamburger para móvil (visible solo en pantallas pequeñas) ──────── */
+    .nav-hamburger {
+      display: none;           /* oculto por defecto, aparece en mobile */
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--blanco);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       SECCIÓN HERO
+       Para cambiar el contenido del hero, busca <section id="hero">
+       ══════════════════════════════════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+    }
+
+    /* Nebulosa de fondo (gradiente radial decorativo) */
+    .hero-nebula {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(131,80,196,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Badge "disponible" con punto verde pulsante */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.22);
+      color: #34D399;
+      font-size: 0.82rem;
+      margin-bottom: 24px;
+    }
+    /* Punto pulsante animado */
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #22C55E;
+      animation: pulso 2s infinite;
+    }
+    @keyframes pulso {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* Título principal del hero */
+    .hero-titulo {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 10px;
+    }
+
+    /* Subtítulo de rol en JetBrains Mono (look técnico) */
+    .hero-rol {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: clamp(0.78rem, 1.8vw, 0.96rem);
+      color: var(--acento-lila);
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Descripción breve */
+    .hero-descripcion {
+      font-size: 1.02rem;
+      color: var(--gris);
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.8;
+    }
+
+    /* Grupo de botones del hero */
+    .hero-botones {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Stats numéricos en la parte inferior del hero */
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 44px;
+      margin-top: 56px;
+      padding-top: 36px;
+      border-top: 1px solid var(--borde);
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-numero {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      background: var(--gradiente-texto);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--gris); margin-top: 4px; }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       ENCABEZADO DE SECCIÓN (componente reutilizable)
+       Usado en todas las secciones para el título + subtítulo centrales
+       ══════════════════════════════════════════════════════════════════════ */
+    .seccion-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .seccion-titulo {
+      font-size: clamp(1.65rem, 3.5vw, 2.25rem);
+      font-weight: 700;
+      margin-bottom: 14px;
+      margin-top: 16px;   /* espacio debajo del .tag */
+    }
+    .seccion-subtitulo {
+      color: var(--gris);
+      font-size: 0.98rem;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       SECCIÓN ABOUT (Sobre mí)
+       Estructura: encabezado + grid 2 col (bio | tarjeta) + grilla "busco"
+       ══════════════════════════════════════════════════════════════════════ */
+    #about { padding: 96px 0; }
+
+    /* Grid de 2 columnas: bio a la izquierda, tarjeta a la derecha */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;    /* IMPORTANTE: evita que la tarjeta se estire */
+      margin-bottom: 36px;
+    }
+
+    /* Texto biográfico */
+    .about-texto h3 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .about-texto p {
+      color: var(--gris);
+      line-height: 1.8;
+      margin-bottom: 12px;
+      font-size: 0.96rem;
+    }
+    .about-texto p:last-child { margin-bottom: 0; }
+
+    /* Tarjeta de perfil a la derecha */
+    .about-card {
+      background: var(--fondo-card);
+      border: 1px solid var(--borde);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .about-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    /* Avatar con iniciales — para agregar foto real, reemplaza este div por <img> */
+    .about-avatar {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--gradiente);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--blanco);
+      flex-shrink: 0;
+    }
+    .about-card-info h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+    .about-card-info p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--acento-lila);
+    }
+
+    /* Lista de detalles: ubicación, idiomas, foco, etc. */
+    .about-detalles { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .about-detalles li {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 0.86rem;
+      color: var(--gris);
+    }
+    .about-detalles li svg { color: var(--acento-lavanda); flex-shrink: 0; }
+    .about-detalles a {
+      color: var(--acento-lila);
+      text-decoration: none;
+      font-size: 0.86rem;
+    }
+    .about-detalles a:hover { text-decoration: underline; }
+
+    /* Grilla "Lo que busco" — 3 tarjetas debajo del grid */
+    .busco-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .busco-item {
+      background: var(--fondo-card);
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: border-color 0.25s;
+    }
+    .busco-item:hover { border-color: rgba(131,80,196,0.48); }
+    .busco-icono {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      background: rgba(131,80,196,0.12);
+      border: 1px solid rgba(131,80,196,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--acento-lavanda);
+      flex-shrink: 0;
+    }
+    .busco-texto strong { display: block; font-size: 0.86rem; font-weight: 700; margin-bottom: 3px; }
+    .busco-texto span   { font-size: 0.78rem; color: var(--gris); line-height: 1.5; }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       SECCIÓN TECH STACK
+       Las tarjetas son adaptativas: crecen con su contenido, no llenan el grid
+       ══════════════════════════════════════════════════════════════════════ */
+    #stack { padding: 96px 0; background: rgba(64,43,71,0.28); }
+
+    /* Grid principal: destacado arriba full-width, resto en 2 columnas debajo */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;   /* 2 columnas iguales para las tarjetas secundarias */
+      grid-template-rows: auto;
+      gap: 18px;
+    }
+
+    /* Tarjeta de categoría — ocupa 1 celda del grid */
+    .stack-categoria {
+      background: var(--fondo-card);
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 24px 26px;
+      transition: border-color 0.3s;
+    }
+    .stack-categoria:hover { border-color: rgba(131,80,196,0.45); }
+
+    /* Tarjeta de especialización — fila entera (ambas columnas) */
+    .stack-categoria.destacado {
+      grid-column: 1 / -1;             /* se extiende de columna 1 a la última */
+      border-color: rgba(201,224,235,0.30);
+      background: rgba(131,80,196,0.08);
+    }
+
+    /* Título de cada categoría */
+    .stack-categoria-titulo {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--acento-lila);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    /* Título especial para la tarjeta de especialización */
+    .stack-categoria.destacado .stack-categoria-titulo { color: #C9E0EB; }
+
+    /* Contenedor de chips de tecnología */
+    .stack-items { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    /* Chip de tecnología estándar */
+    .stack-item {
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: rgba(131,80,196,0.07);
+      border: 1px solid rgba(131,80,196,0.18);
+      color: var(--blanco);
+      font-size: 0.8rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .stack-item:hover { background: rgba(131,80,196,0.18); border-color: rgba(131,80,196,0.38); }
+
+    /* Chip destacado — para la tarjeta de especialización */
+    .stack-item-highlight {
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: rgba(131, 80, 196, 0.18);
+      border: 1px solid rgba(201, 224, 235, 0.30);
+      color: #C9E0EB;
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* Nota de pie en tarjeta de especialización */
+    .stack-nota {
+      margin-top: 12px;
+      font-size: 0.71rem;
+      color: var(--gris);
+    }
+
+    /* ── Barras de nivel de habilidad ───────────────────────────────────── */
+    /* Se animan cuando la sección entra en el viewport (ver JS: animarBarras) */
+    .skill-bar-wrap { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
+    .skill-bar-item { display: flex; flex-direction: column; gap: 5px; }
+    .skill-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--gris);
+    }
+    .skill-bar-label span:last-child { color: var(--acento-lila); font-weight: 600; }
+    .skill-bar-track {
+      height: 4px;
+      background: rgba(201,224,235,0.12);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #8350C4, #7392B5);
+      width: 0%;
+      transition: width 1.2s ease;   /* animación de llenado */
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       SECCIÓN PROYECTOS
+       Las cards se generan dinámicamente desde portfolio-projects.json (JS)
+       ══════════════════════════════════════════════════════════════════════ */
+    #proyectos { padding: 96px 0; }
+
+    /* Botones de filtro por categoría */
+    .proyectos-filtros {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .filtro-btn {
+      padding: 7px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--borde);
+      background: transparent;
+      color: var(--gris);
+      font-size: 0.83rem;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filtro-btn:hover, .filtro-btn.activo {
+      background: var(--acento-violeta);
+      border-color: var(--acento-violeta);
+      color: var(--blanco);
+    }
+
+    /* Grid de tarjetas de proyectos */
+    .proyectos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    /* Tarjeta individual de proyecto */
+    .proyecto-card {
+      background: var(--fondo-card);
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .proyecto-card:hover { border-color: var(--acento-violeta); transform: translateY(-4px); }
+
+    /* Imagen del proyecto — si no hay imagen se muestra el placeholder */
+    .proyecto-img { width: 100%; height: 170px; object-fit: cover; display: block; }
+    .proyecto-img-placeholder {
+      width: 100%;
+      height: 170px;
+      background: linear-gradient(135deg, rgba(131,80,196,0.15), rgba(115,146,181,0.10));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--borde);
+    }
+    .proyecto-img-placeholder span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--acento-lila);
+      opacity: 0.7;
+    }
+
+    /* Cuerpo de la tarjeta de proyecto */
+    .proyecto-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .proyecto-tipo {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--acento-lila);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .proyecto-titulo { font-size: 1.02rem; font-weight: 700; margin-bottom: 8px; }
+    .proyecto-descripcion {
+      color: var(--gris);
+      font-size: 0.86rem;
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .proyecto-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+    .proyecto-links { display: flex; gap: 8px; margin-top: auto; }
+    .proyecto-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 13px;
+      border-radius: 8px;
+      border: 1px solid var(--borde);
+      color: var(--gris);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .proyecto-link:hover { color: var(--blanco); border-color: var(--acento-violeta); }
+
+    /* Mensaje cuando no hay proyectos para el filtro activo */
+    .proyectos-vacio {
+      text-align: center;
+      color: var(--gris);
+      padding: 60px 0;
+      grid-column: 1 / -1;
+      font-size: 0.93rem;
+    }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       SECCIÓN EXPERIENCIA — timeline vertical
+       Para agregar una entrada: copia un .timeline-item y edítalo
+       ══════════════════════════════════════════════════════════════════════ */
+    #experiencia { padding: 96px 0; background: rgba(64,43,71,0.28); }
+
+    .timeline {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Línea vertical izquierda del timeline */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 8px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--acento-violeta), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 58px;
+      margin-bottom: 40px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    /* Punto en la línea — círculo con relleno */
+    .timeline-dot {
+      position: absolute;
+      left: 12px;
+      top: 6px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--fondo-principal);
+      border: 2px solid var(--acento-violeta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-dot::after {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--acento-violeta);
+    }
+
+    /* Punto verde pulsante para el trabajo ACTUAL */
+    .timeline-dot.activo { border-color: var(--verde); }
+    .timeline-dot.activo::after { background: var(--verde); animation: pulso 2s infinite; }
+
+    /* Tarjeta de experiencia */
+    .timeline-card {
+      background: var(--fondo-card);
+      border: 1px solid var(--borde);
+      border-radius: 14px;
+      padding: 26px;
+      transition: border-color 0.3s;
+    }
+    .timeline-card:hover { border-color: rgba(131,80,196,0.42); }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .timeline-rol { font-size: 1.02rem; font-weight: 700; }
+
+    /* Badge de período (ej: "2024 — Presente") */
+    .timeline-periodo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.73rem;
+      color: var(--gris);
+      background: rgba(131,80,196,0.08);
+      border: 1px solid var(--borde);
+      border-radius: 6px;
+      padding: 3px 9px;
+      white-space: nowrap;
+    }
+
+    .timeline-empresa {
+      color: var(--acento-lila);
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .timeline-descripcion {
+      color: var(--gris);
+      font-size: 0.88rem;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       SECCIÓN EDUCACIÓN
+       Para agregar una entrada: copia un .educacion-card y edítalo
+       ══════════════════════════════════════════════════════════════════════ */
+    #educacion { padding: 96px 0; }
+
+    /* Grid responsivo de tarjetas de educación */
+    .educacion-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 18px;
+    }
+    .educacion-card {
+      background: var(--fondo-card);
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.3s, transform 0.3s;
+      display: flex;
+      gap: 16px;
+    }
+    .educacion-card:hover { border-color: rgba(131,80,196,0.42); transform: translateY(-3px); }
+
+    /* Ícono de institución */
+    .educacion-icono {
+      width: 44px; height: 44px;
+      border-radius: 11px;
+      background: rgba(131,80,196,0.12);
+      border: 1px solid rgba(131,80,196,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--acento-lavanda);
+      flex-shrink: 0;
+    }
+
+    .educacion-titulo    { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .educacion-institucion {
+      color: var(--acento-lila);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .educacion-periodo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gris);
+      margin-bottom: 8px;
+    }
+    .educacion-descripcion { color: var(--gris); font-size: 0.82rem; line-height: 1.65; }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       SECCIÓN CONTACTO
+       ══════════════════════════════════════════════════════════════════════ */
+    #contacto { padding: 96px 0; }
+
+    .contacto-inner {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .contacto-inner p {
+      color: var(--gris);
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    /* Tarjetas de contacto (email, linkedin, github) */
+    .contacto-cards { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .contacto-card {
+      background: var(--fondo-card);
+      border: 1px solid var(--borde);
+      border-radius: 13px;
+      padding: 18px 24px;
+      text-decoration: none;
+      color: var(--blanco);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 0.93rem;
+      transition: border-color 0.2s, transform 0.2s;
+      min-width: 150px;
+      justify-content: center;
+    }
+    .contacto-card:hover { border-color: var(--acento-violeta); transform: translateY(-3px); }
+    .contacto-card svg { color: var(--acento-lavanda); }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════════════════════════════════════ */
+    footer {
+      padding: 26px 0;
+      border-top: 1px solid var(--borde);
+      text-align: center;
+      color: var(--gris);
+      font-size: 0.8rem;
+    }
+    footer span { color: var(--acento-lila); }
+
+    /* ══════════════════════════════════════════════════════════════════════
+       DISEÑO RESPONSIVE
+       Breakpoints:
+         768px → tablet / menú hamburger
+         480px → móvil pequeño
+       ══════════════════════════════════════════════════════════════════════ */
+
+    /* ── Tablet (≤ 768px) ───────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+
+      /* NAV: ocultar links, mostrar hamburger */
+      .nav-links { display: none; }
+      .nav-cta    { display: none; }    /* oculta el botón "Contacto" en móvil */
+      .nav-hamburger { display: flex; }
+
+      /* Menú abierto en móvil */
+      .nav-links.abierto {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 56px; left: 0; right: 0;
+        background: rgba(38,36,35,0.97);
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--borde);
+        gap: 18px;
+        z-index: 99;
+      }
+
+      /* HERO */
+      .hero-stats { gap: 24px; }
+      .hero-botones { flex-direction: column; align-items: center; }
+      .hero-botones .btn-primario,
+      .hero-botones .btn-secundario { width: 100%; max-width: 280px; justify-content: center; }
+
+      /* ABOUT: apilar columnas verticalmente */
+      .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .busco-grid  { grid-template-columns: 1fr; }
+
+      /* STACK: una sola columna en móvil */
+      .stack-grid { grid-template-columns: 1fr; }
+      .stack-categoria.destacado { grid-column: 1; }
+
+      /* TIMELINE: ajustar sangría */
+      .timeline::before { left: 12px; }
+      .timeline-item    { padding-left: 44px; }
+      .timeline-dot     { left: 4px; }
+
+      /* EDUCACIÓN: 1 columna */
+      .educacion-grid { grid-template-columns: 1fr; }
+
+      /* PROYECTOS: 1 columna */
+      .proyectos-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Móvil pequeño (≤ 480px) ────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      /* Reducir padding de secciones */
+      #hero, #about, #stack, #proyectos,
+      #experiencia, #educacion, #contacto { padding-top: 72px; padding-bottom: 72px; }
+      #hero { padding-top: 88px; }
+
+      .container { padding: 0 16px; }
+
+      /* Hero título más pequeño */
+      .hero-titulo { font-size: 2rem; }
+      .hero-stats  { gap: 18px; }
+      .stat-numero { font-size: 1.55rem; }
+
+      /* Tarjetas de contacto en columna */
+      .contacto-cards { flex-direction: column; align-items: center; }
+      .contacto-card  { width: 100%; max-width: 280px; }
+
+      /* About card compacta */
+      .about-card { padding: 22px; }
+      .about-avatar { width: 50px; height: 50px; font-size: 1.1rem; }
+
+      /* Timeline más compacto */
+      .timeline-card { padding: 20px; }
+      .timeline-header { flex-direction: column; gap: 6px; }
+
+      /* Educación: card en columna */
+      .educacion-card { flex-direction: column; }
+      .educacion-icono { width: 40px; height: 40px; }
+
+      /* Busco items en columna */
+      .busco-item { flex-direction: row; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       NAVEGACIÓN FIJA
+       Para cambiar los links: edita los <a> dentro de .nav-links
+       Para cambiar el logo: edita el texto de .nav-logo
+       ════════════════════════════════════════════════════════════════════════ -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+
+        <!-- Logo — iniciales MV, sin referencias a la marca personal -->
+        <a href="#hero" class="nav-logo">MV</a>
+
+        <!-- Links de navegación por sección -->
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#about"       data-i18n="nav.about">Sobre mí</a></li>
+          <li><a href="#stack"       data-i18n="nav.stack">Stack</a></li>
+          <li><a href="#proyectos"   data-i18n="nav.proyectos">Proyectos</a></li>
+          <li><a href="#experiencia" data-i18n="nav.experiencia">Experiencia</a></li>
+          <li><a href="#educacion"   data-i18n="nav.educacion">Educación</a></li>
+        </ul>
+
+        <!-- Toggle de idioma + botón contacto + hamburger -->
+        <div class="nav-controles">
+          <div class="lang-toggle" aria-label="Cambiar idioma">
+            <button class="lang-btn activo" id="btnEs" onclick="setLang('es')">ES</button>
+            <button class="lang-btn"        id="btnEn" onclick="setLang('en')">EN</button>
+          </div>
+          <a href="#contacto" class="nav-cta" data-i18n="nav.contacto">Contacto</a>
+          <!-- Botón hamburger — visible solo en móvil -->
+          <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       HERO — primera sección visible
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-nebula"></div>
+    <div class="container">
+      <div class="hero-content fade-in">
+
+        <!-- Badge de disponibilidad con punto pulsante -->
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span data-i18n="hero.badge">Disponible para nuevos roles</span>
+        </div>
+
+        <!-- Nombre completo -->
+        <h1 class="hero-titulo">
+          Martina<br>
+          <span class="texto-gradiente">Virgilli</span>
+        </h1>
+
+        <!-- Rol profesional en monospace -->
+        <p class="hero-rol" data-i18n="hero.rol">
+          Software Developer · Automatizaciones · Python · SQL
+        </p>
+
+        <!-- Descripción breve -->
+        <p class="hero-descripcion" data-i18n="hero.descripcion">
+          Desarrolladora de software especializada en automatizaciones, Python e inteligencia
+          artificial. Con experiencia en SQL, análisis de datos y desarrollo full stack.
+          Disponible para trabajo remoto.
+        </p>
+
+        <!-- ✏️ LINKS SOCIALES — editar las URLs acá directamente -->
+        <div class="hero-botones">
+
+          <!-- LinkedIn → cambiar el href si cambia tu URL de LinkedIn -->
+          <a href="https://www.linkedin.com/in/martina-virgilli-a80b95211"
+             target="_blank" rel="noopener" class="btn-primario">
+            <!-- Ícono LinkedIn -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            LinkedIn
+          </a>
+
+          <!-- GitHub → cambiar el href si cambia tu usuario de GitHub -->
+          <a href="https://github.com/martinavirgilli" target="_blank" rel="noopener" class="btn-secundario">
+            <!-- Ícono GitHub -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            GitHub
+          </a>
+
+          <!-- Email — abre Gmail en nueva pestaña con el destinatario precargado -->
+          <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=martinavirgilli@gmail.com"
+             target="_blank" rel="noopener" class="btn-secundario">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,12 2,6"/>
+            </svg>
+            <span data-i18n="hero.email">Email</span>
+          </a>
+        </div>
+
+        <!-- Stats numéricos -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-numero">1+</div>
+            <div class="stat-label" data-i18n="hero.stat1">Año de experiencia</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-numero">4</div>
+            <div class="stat-label" data-i18n="hero.stat2">Años estudiando dev</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-numero">Full</div>
+            <div class="stat-label" data-i18n="hero.stat3">Stack: front + back + DB</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-numero">B2</div>
+            <div class="stat-label" data-i18n="hero.stat4">Inglés</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       SOBRE MÍ
+       Estructura: encabezado → grid (bio | tarjeta) → grilla "Lo que busco"
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+
+      <!-- Encabezado de sección -->
+      <div class="seccion-header fade-in">
+        <span class="tag" data-i18n="about.tag">Sobre mí</span>
+        <h2 class="seccion-titulo" data-i18n="about.titulo">
+          Desarrolladora que aprende <span class="texto-gradiente">rápido</span>
+        </h2>
+      </div>
+
+      <!-- Grid 2 columnas: bio a la izquierda, tarjeta de perfil a la derecha -->
+      <div class="about-grid">
+
+        <!-- Texto biográfico (breve y directo para reclutadores) -->
+        <div class="about-texto fade-in">
+          <h3 data-i18n="about.subtitulo">Hola, soy Martina</h3>
+          <p data-i18n="about.p1">
+            Desarrolladora de software con experiencia en SQL, análisis de datos y desarrollo
+            full stack. Actualmente trabajo en TELPIN y estoy finalizando la Diplomatura en
+            Desarrollo Web Full Stack en UADE.
+          </p>
+          <p data-i18n="about.p2">
+            Me estoy especializando en automatizaciones, Python e inteligencia artificial.
+            Busco un rol remoto donde aportar desde el primer día y seguir creciendo técnicamente.
+          </p>
+        </div>
+
+        <!-- Tarjeta de perfil con datos clave -->
+        <div class="about-card fade-in">
+          <div class="about-card-header">
+            <!-- Avatar con iniciales — reemplazar por <img> si se quiere agregar foto -->
+            <div class="about-avatar">MV</div>
+            <div class="about-card-info">
+              <h4>Martina Virgilli</h4>
+              <p>software.dev · junior()</p>
+            </div>
+          </div>
+
+          <ul class="about-detalles">
+            <!-- Ubicación -->
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span data-i18n="about.ubicacion">Pinamar, Buenos Aires, Argentina</span>
+            </li>
+            <!-- Idiomas -->
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span data-i18n="about.idiomas">Español (nativo) · Inglés B2</span>
+            </li>
+            <!-- Foco técnico -->
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+              <span data-i18n="about.foco">Python · SQL · Automatizaciones · IA</span>
+            </li>
+            <!-- Modalidad -->
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+              <span data-i18n="about.disponibilidad">Remoto · Full-time · Part-time</span>
+            </li>
+            <!-- LinkedIn -->
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              <a href="https://www.linkedin.com/in/martina-virgilli-a80b95211"
+                 target="_blank" rel="noopener">
+                linkedin.com/in/martina-virgilli
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div><!-- /about-grid -->
+
+      <!-- Grilla de 3 tarjetas "Lo que busco" — fuera del grid para alinearse con todo el ancho -->
+      <div class="busco-grid fade-in">
+
+        <!-- Tarjeta 1: Automatizaciones -->
+        <div class="busco-item">
+          <div class="busco-icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <div class="busco-texto">
+            <strong data-i18n="about.busco1.titulo">Automatizaciones</strong>
+            <span data-i18n="about.busco1.desc">Flujos, scripts e integraciones que resuelven problemas solos.</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Python & IA -->
+        <div class="busco-item">
+          <div class="busco-icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+          </div>
+          <div class="busco-texto">
+            <strong data-i18n="about.busco2.titulo">Python & IA</strong>
+            <span data-i18n="about.busco2.desc">Profundizando en Python, Claude API y OpenAI para proyectos reales.</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Trabajo remoto -->
+        <div class="busco-item">
+          <div class="busco-icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div class="busco-texto">
+            <strong data-i18n="about.busco3.titulo">Trabajo remoto</strong>
+            <span data-i18n="about.busco3.desc">Disponible en cualquier zona horaria. Preferencia 100% remoto.</span>
+          </div>
+        </div>
+
+      </div><!-- /busco-grid -->
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       TECH STACK
+       Las tarjetas crecen con su contenido (.stack-categoria flex: 0 0 auto)
+       La tarjeta de especialización es más ancha (.stack-categoria.destacado)
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="stack">
+    <div class="container">
+
+      <div class="seccion-header fade-in">
+        <span class="tag" data-i18n="stack.tag">Stack técnico</span>
+        <h2 class="seccion-titulo" data-i18n="stack.titulo">
+          Las herramientas con las que <span class="texto-gradiente">trabajo</span>
+        </h2>
+      </div>
+
+      <div class="stack-grid fade-in">
+
+        <!-- ✏️ STACK TÉCNICO — los chips (pills) y las barras se editan acá directamente en el HTML.
+             Los textos de los títulos de categoría (ej: "Especialización en curso") se editan
+             en el diccionario de traducciones más abajo, buscando las claves stack.*
+             Las barras de nivel: cambiá el número en data-width (0 = 0%, 100 = 100%) -->
+
+        <!-- ── Tarjeta ESPECIALIZACIÓN (destacada, ancho completo) ─────────── -->
+        <div class="stack-categoria destacado">
+          <div class="stack-categoria-titulo">
+            <!-- Ícono rayo -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+            <span data-i18n="stack.cat.auto">Especialización en curso</span>
+          </div>
+
+          <!-- Chips de tecnologías en foco -->
+          <div class="stack-items">
+            <span class="stack-item-highlight">Python</span>
+            <span class="stack-item-highlight">Automatizaciones</span>
+            <span class="stack-item-highlight">Claude API</span>
+            <span class="stack-item-highlight">OpenAI API</span>
+            <span class="stack-item-highlight">Scripting</span>
+            <span class="stack-item-highlight">Integraciones</span>
+          </div>
+
+          <p class="stack-nota" data-i18n="stack.nota.auto">↑ Foco principal de aprendizaje activo</p>
+
+          <!-- Barras de nivel — data-width define el porcentaje (0-100) -->
+          <div class="skill-bar-wrap" id="skillBars">
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Python</span>
+                <span data-i18n="stack.nivel.intermedio">Intermedio</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="62"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>SQL / MySQL</span>
+                <span data-i18n="stack.nivel.avanzado">Avanzado</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="82"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>Java / Spring Boot</span>
+                <span data-i18n="stack.nivel.intermedio">Intermedio</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="65"></div>
+              </div>
+            </div>
+            <div class="skill-bar-item">
+              <div class="skill-bar-label">
+                <span>JavaScript / HTML / CSS</span>
+                <span data-i18n="stack.nivel.intermedio">Intermedio</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" data-width="70"></div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /destacado -->
+
+        <!-- ── Tarjeta LENGUAJES ──────────────────────────────────────────── -->
+        <div class="stack-categoria">
+          <div class="stack-categoria-titulo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+            <span data-i18n="stack.cat1">Lenguajes</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Python</span>
+            <span class="stack-item">SQL (MySQL)</span>
+            <span class="stack-item">Java</span>
+            <span class="stack-item">JavaScript</span>
+            <span class="stack-item">HTML / CSS</span>
+          </div>
+        </div>
+
+        <!-- ── Tarjeta BACKEND ────────────────────────────────────────────── -->
+        <div class="stack-categoria">
+          <div class="stack-categoria-titulo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <span data-i18n="stack.cat2">Backend</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Spring Boot</span>
+            <span class="stack-item">REST APIs</span>
+            <span class="stack-item">JWT Auth</span>
+          </div>
+        </div>
+
+        <!-- ── Tarjeta BASES DE DATOS ─────────────────────────────────────── -->
+        <div class="stack-categoria">
+          <div class="stack-categoria-titulo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+            <span data-i18n="stack.cat3">Bases de datos</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">MySQL</span>
+            <span class="stack-item">Análisis SQL</span>
+            <span class="stack-item">Optimización</span>
+            <span class="stack-item">Reportes</span>
+          </div>
+        </div>
+
+        <!-- ── Tarjeta HERRAMIENTAS ───────────────────────────────────────── -->
+        <div class="stack-categoria">
+          <div class="stack-categoria-titulo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span data-i18n="stack.cat4">Herramientas</span>
+          </div>
+          <div class="stack-items">
+            <span class="stack-item">Git / GitHub</span>
+            <span class="stack-item">Postman</span>
+            <span class="stack-item">Excel</span>
+            <span class="stack-item">VS Code</span>
+          </div>
+        </div>
+
+      </div><!-- /stack-grid -->
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PROYECTOS
+       Las cards se generan dinámicamente (ver JS: cargarProyectos / renderizarProyectos)
+       Para agregar proyectos: editar portfolio-projects.json
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="proyectos">
+    <div class="container">
+
+      <div class="seccion-header fade-in">
+        <span class="tag" data-i18n="proyectos.tag">Proyectos</span>
+        <h2 class="seccion-titulo" data-i18n="proyectos.titulo">
+          Cosas que <span class="texto-gradiente">construí</span>
+        </h2>
+        <p class="seccion-subtitulo" data-i18n="proyectos.subtitulo">
+          Proyectos académicos y personales. Filtrar por tipo.
+        </p>
+      </div>
+
+      <!-- Botones de filtro — data-categoria debe coincidir con el campo "categoria" del JSON -->
+      <div class="proyectos-filtros fade-in">
+        <button class="filtro-btn activo" data-categoria="todos"
+                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.todos">Todos</button>
+        <button class="filtro-btn" data-categoria="web"
+                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.web">Web / Full Stack</button>
+        <button class="filtro-btn" data-categoria="automatizacion"
+                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.automatizacion">Automatización</button>
+        <button class="filtro-btn" data-categoria="bot"
+                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.bot">Bot</button>
+      </div>
+
+      <!-- Las cards se inyectan aquí por JavaScript -->
+      <div class="proyectos-grid" id="proyectosGrid"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       EXPERIENCIA PROFESIONAL
+       Para agregar una entrada: duplicar un .timeline-item y editar su contenido
+       El trabajo actual tiene .timeline-dot.activo (punto verde pulsante)
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="experiencia">
+    <div class="container">
+
+      <div class="seccion-header fade-in">
+        <span class="tag" data-i18n="exp.tag">Experiencia</span>
+        <h2 class="seccion-titulo" data-i18n="exp.titulo">
+          Trayectoria <span class="texto-gradiente">profesional</span>
+        </h2>
+      </div>
+
+      <div class="timeline fade-in">
+
+        <!-- ── Entrada 1: TELPIN (trabajo actual) ─────────────────────────── -->
+        <div class="timeline-item">
+          <div class="timeline-dot activo"></div>  <!-- punto verde = trabajo actual -->
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-rol" data-i18n="exp.1.rol">
+                Analista de Sistemas / Desarrolladora Junior
+              </span>
+              <span class="timeline-periodo" data-i18n="exp.1.periodo">2024 — Presente</span>
+            </div>
+            <div class="timeline-empresa" data-i18n="exp.1.empresa">
+              Cooperativa Telefónica de Pinamar Ltda. (TELPIN)
+            </div>
+            <p class="timeline-descripcion" data-i18n="exp.1.desc">
+              Desarrollo, optimización y mantenimiento de consultas SQL para sistemas internos.
+              Análisis de datos, generación de reportes y soporte operativo para distintas áreas,
+              contribuyendo a la optimización de procesos y la gestión eficiente de bases de datos.
+            </p>
+            <div class="timeline-tags">
+              <span class="tag">SQL</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Análisis de datos</span>
+              <span class="tag">Reportes</span>
+              <span class="tag">Optimización de procesos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Entrada 2: Proyecto final universitario ────────────────────── -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <span class="timeline-rol" data-i18n="exp.2.rol">
+                Proyecto Final — Desarrolladora Full Stack
+              </span>
+              <span class="timeline-periodo" data-i18n="exp.2.periodo">2025</span>
+            </div>
+            <div class="timeline-empresa" data-i18n="exp.2.empresa">
+              Universidad Argentina de la Empresa (UADE)
+            </div>
+            <p class="timeline-descripcion" data-i18n="exp.2.desc">
+              Sistema de gestión de refugio de animales como proyecto final de diplomatura.
+              Backend en Java con Spring Boot, REST APIs y autenticación JWT. Frontend con
+              HTML, CSS y JavaScript. Base de datos MySQL, testing con Postman y control
+              de versiones con Git.
+            </p>
+            <div class="timeline-tags">
+              <span class="tag">Java</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">JWT</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">HTML / CSS / JS</span>
+              <span class="tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /timeline -->
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       EDUCACIÓN Y CERTIFICACIONES
+       Para agregar una entrada: duplicar un .educacion-card y editar su contenido
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="educacion">
+    <div class="container">
+
+      <div class="seccion-header fade-in">
+        <span class="tag" data-i18n="edu.tag">Educación</span>
+        <h2 class="seccion-titulo" data-i18n="edu.titulo">
+          Formación y <span class="texto-gradiente">certificaciones</span>
+        </h2>
+      </div>
+
+      <div class="educacion-grid fade-in">
+
+        <!-- Ícono reutilizable: universidad -->
+        <!-- Tecnicatura UADE -->
+        <div class="educacion-card">
+          <div class="educacion-icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="educacion-titulo" data-i18n="edu.1.titulo">Tecnicatura en Desarrollo de Software</div>
+            <div class="educacion-institucion" data-i18n="edu.1.institucion">Universidad Argentina de la Empresa (UADE)</div>
+            <div class="educacion-periodo">2021 – 2025</div>
+            <p class="educacion-descripcion" data-i18n="edu.1.desc">
+              Carrera completa: programación, bases de datos, sistemas y desarrollo web.
+            </p>
+          </div>
+        </div>
+
+        <!-- Diplomatura Full Stack UADE -->
+        <div class="educacion-card">
+          <div class="educacion-icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="educacion-titulo" data-i18n="edu.2.titulo">Diplomatura en Desarrollo Web Full Stack</div>
+            <div class="educacion-institucion" data-i18n="edu.2.institucion">Universidad Argentina de la Empresa (UADE)</div>
+            <div class="educacion-periodo">2025</div>
+            <p class="educacion-descripcion" data-i18n="edu.2.desc">
+              Especialización en desarrollo web integrado: frontend y backend.
+            </p>
+          </div>
+        </div>
+
+        <!-- Intercambio España -->
+        <div class="educacion-card">
+          <div class="educacion-icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="educacion-titulo" data-i18n="edu.3.titulo">Programa de Intercambio Universitario</div>
+            <div class="educacion-institucion" data-i18n="edu.3.institucion">Universidad Miguel Hernández — Elche, España</div>
+            <div class="educacion-periodo">2023</div>
+            <p class="educacion-descripcion" data-i18n="edu.3.desc">
+              Experiencia académica internacional en entorno universitario europeo.
+            </p>
+          </div>
+        </div>
+
+        <!-- CCNA Cisco -->
+        <div class="educacion-card">
+          <div class="educacion-icono">
+            <!-- Ícono certificado/medalla -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="6"/>
+              <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+          </div>
+          <div>
+            <div class="educacion-titulo" data-i18n="edu.4.titulo">Curso CCNA v7 — Introducción a Redes</div>
+            <div class="educacion-institucion" data-i18n="edu.4.institucion">Cisco Networking Academy</div>
+            <div class="educacion-periodo" data-i18n="edu.4.periodo">Completado</div>
+            <p class="educacion-descripcion" data-i18n="edu.4.desc">
+              Fundamentos de redes, protocolos TCP/IP y configuración básica.
+            </p>
+          </div>
+        </div>
+
+        <!-- Python Udemy -->
+        <div class="educacion-card">
+          <div class="educacion-icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="6"/>
+              <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
+            </svg>
+          </div>
+          <div>
+            <div class="educacion-titulo" data-i18n="edu.5.titulo">Curso Python Experto +70 horas</div>
+            <div class="educacion-institucion" data-i18n="edu.5.institucion">Udemy</div>
+            <div class="educacion-periodo" data-i18n="edu.5.periodo">En curso</div>
+            <p class="educacion-descripcion" data-i18n="edu.5.desc">
+              Python avanzado: estructuras de datos, automatizaciones y scripting.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bachiller -->
+        <div class="educacion-card">
+          <div class="educacion-icono">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="educacion-titulo" data-i18n="edu.6.titulo">Bachiller en Economía — Escuela Bilingüe</div>
+            <div class="educacion-institucion" data-i18n="edu.6.institucion">Colegio San Antonio</div>
+            <div class="educacion-periodo">2015 – 2020</div>
+            <p class="educacion-descripcion" data-i18n="edu.6.desc">
+              Modalidad bilingüe español / inglés. Base en administración y pensamiento analítico.
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /educacion-grid -->
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       CONTACTO
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="contacto">
+    <div class="container">
+      <div class="contacto-inner fade-in">
+
+        <span class="tag" style="margin-bottom: 20px; display: inline-block;"
+              data-i18n="contacto.tag">Contacto</span>
+        <h2 class="seccion-titulo" data-i18n="contacto.titulo">
+          ¿Hablamos sobre <span class="texto-gradiente">el rol</span>?
+        </h2>
+        <p data-i18n="contacto.desc">
+          Disponible para roles remotos full-time, part-time o proyectos.
+          Puedes contactarme por email o directamente en LinkedIn.
+        </p>
+
+        <div class="contacto-cards">
+          <!-- Email — abre Gmail en nueva pestaña con el destinatario precargado -->
+          <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=martinavirgilli@gmail.com"
+             target="_blank" rel="noopener" class="contacto-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,12 2,6"/>
+            </svg>
+            <span>Email</span>
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/martina-virgilli-a80b95211"
+             target="_blank" rel="noopener" class="contacto-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+          <!-- GitHub -->
+          <a href="https://github.com/martinavirgilli" target="_blank" rel="noopener" class="contacto-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <p>Desarrollado por <span>Martina Virgilli</span> · 2026</p>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       JAVASCRIPT
+       ════════════════════════════════════════════════════════════════════════ -->
+  <script>
+
+    /* ══════════════════════════════════════════════════════════════════════
+       ✏️  EDITAR TEXTOS DEL PORTFOLIO — LEER PRIMERO
+       ══════════════════════════════════════════════════════════════════════
+
+       CASI TODO el texto visible de la página está acá abajo, en el objeto
+       `traducciones`. Tiene dos bloques: `es` (español) y `en` (inglés).
+
+       Para cambiar cualquier texto:
+         1. Buscá la clave que describe lo que querés cambiar
+            (ej: 'hero.descripcion', 'about.p1', 'exp.1.desc', etc.)
+         2. Editá el valor entre comillas en `es:` y/o `en:`
+         3. Guardá — el cambio se aplica solo en ambos idiomas
+
+       Las claves tienen que existir en los DOS bloques (es y en).
+
+       LO QUE NO está acá y hay que editar en el HTML directamente:
+         → Links de LinkedIn, GitHub, Email  →  buscar "#hero" y "#contacto"
+         → Chips del stack técnico (las pills de tecnologías)  →  buscar "#stack"
+         → Porcentajes de las barras de nivel  →  buscar "data-width"
+         → Proyectos  →  editar portfolio-projects.json (no este archivo)
+       ══════════════════════════════════════════════════════════════════════ */
+    const traducciones = {
+
+      /* ────────────────────────────────────────────────────────────────────
+         ESPAÑOL (neutro — sin modismos regionales)
+         ──────────────────────────────────────────────────────────────────── */
+      es: {
+
+        /* Navegación */
+        'nav.about':        'Sobre mí',
+        'nav.stack':        'Stack',
+        'nav.proyectos':    'Proyectos',
+        'nav.experiencia':  'Experiencia',
+        'nav.educacion':    'Educación',
+        'nav.contacto':     'Contacto',
+
+        /* Hero */
+        'hero.badge':       'Disponible para nuevos roles',
+        'hero.rol':         'Software Developer · Automatizaciones · Python · SQL',
+        'hero.descripcion': 'Desarrolladora de software especializada en automatizaciones, Python e inteligencia artificial. Con experiencia en SQL, análisis de datos y desarrollo full stack. Disponible para trabajo remoto.',
+        'hero.email':       'Email',
+        'hero.stat1':       'Año de experiencia',
+        'hero.stat2':       'Años estudiando dev',
+        'hero.stat3':       'Stack: front + back + DB',
+        'hero.stat4':       'Inglés',
+
+        /* Sobre mí */
+        'about.tag':          'Sobre mí',
+        'about.titulo':       'Desarrolladora que aprende <span class="texto-gradiente">rápido</span>',
+        'about.subtitulo':    'Hola, soy Martina',
+        'about.p1':           'Desarrolladora de software con experiencia en SQL, análisis de datos y desarrollo full stack. Actualmente trabajo en TELPIN y estoy finalizando la Diplomatura en Desarrollo Web Full Stack en UADE.',
+        'about.p2':           'Me estoy especializando en automatizaciones, Python e inteligencia artificial. Busco un rol remoto donde aportar desde el primer día y seguir creciendo técnicamente.',
+        'about.ubicacion':    'Pinamar, Buenos Aires, Argentina',
+        'about.idiomas':      'Español (nativo) · Inglés B2',
+        'about.foco':         'Python · SQL · Automatizaciones · IA',
+        'about.disponibilidad': 'Remoto · Full-time · Part-time',
+        'about.busco1.titulo': 'Automatizaciones',
+        'about.busco1.desc':   'Flujos, scripts e integraciones que resuelven problemas solos.',
+        'about.busco2.titulo': 'Python & IA',
+        'about.busco2.desc':   'Profundizando en Python, Claude API y OpenAI para proyectos reales.',
+        'about.busco3.titulo': 'Trabajo remoto',
+        'about.busco3.desc':   'Disponible en cualquier zona horaria. Preferencia 100% remoto.',
+
+        /* Stack técnico */
+        'stack.tag':           'Stack técnico',
+        'stack.titulo':        'Las herramientas con las que <span class="texto-gradiente">trabajo</span>',
+        'stack.cat.auto':      'Especialización en curso',
+        'stack.nota.auto':     '↑ Foco principal de aprendizaje activo',
+        'stack.nivel.intermedio': 'Intermedio',
+        'stack.nivel.avanzado':   'Avanzado',
+        'stack.cat1':          'Lenguajes',
+        'stack.cat2':          'Backend',
+        'stack.cat3':          'Bases de datos',
+        'stack.cat4':          'Herramientas',
+
+        /* Proyectos */
+        'proyectos.tag':                  'Proyectos',
+        'proyectos.titulo':               'Cosas que <span class="texto-gradiente">construí</span>',
+        'proyectos.subtitulo':            'Proyectos académicos y personales. Filtrar por tipo.',
+        'proyectos.filtro.todos':         'Todos',
+        'proyectos.filtro.web':           'Web / Full Stack',
+        'proyectos.filtro.automatizacion':'Automatización',
+        'proyectos.filtro.bot':           'Bot',
+        'proyectos.vacio':                'No hay proyectos en esta categoría todavía.',
+        'proyectos.ver_github':           'GitHub',
+        'proyectos.ver_demo':             'Demo',
+
+        /* Experiencia */
+        'exp.tag':     'Experiencia',
+        'exp.titulo':  'Trayectoria <span class="texto-gradiente">profesional</span>',
+        'exp.1.rol':     'Analista de Sistemas / Desarrolladora Junior',
+        'exp.1.periodo': '2024 — Presente',
+        'exp.1.empresa': 'Cooperativa Telefónica de Pinamar Ltda. (TELPIN)',
+        'exp.1.desc':    'Desarrollo, optimización y mantenimiento de consultas SQL para sistemas internos. Análisis de datos, generación de reportes y soporte operativo para distintas áreas, contribuyendo a la optimización de procesos y la gestión eficiente de bases de datos.',
+        'exp.2.rol':     'Proyecto Final — Desarrolladora Full Stack',
+        'exp.2.periodo': '2025',
+        'exp.2.empresa': 'Universidad Argentina de la Empresa (UADE)',
+        'exp.2.desc':    'Sistema de gestión de refugio de animales como proyecto final de diplomatura. Backend en Java con Spring Boot, REST APIs y autenticación JWT. Frontend con HTML, CSS y JavaScript. Base de datos MySQL, testing con Postman y control de versiones con Git.',
+
+        /* Educación */
+        'edu.tag':    'Educación',
+        'edu.titulo': 'Formación y <span class="texto-gradiente">certificaciones</span>',
+        'edu.1.titulo':       'Tecnicatura en Desarrollo de Software',
+        'edu.1.institucion':  'Universidad Argentina de la Empresa (UADE)',
+        'edu.1.desc':         'Carrera completa: programación, bases de datos, sistemas y desarrollo web.',
+        'edu.2.titulo':       'Diplomatura en Desarrollo Web Full Stack',
+        'edu.2.institucion':  'Universidad Argentina de la Empresa (UADE)',
+        'edu.2.desc':         'Especialización en desarrollo web integrado: frontend y backend.',
+        'edu.3.titulo':       'Programa de Intercambio Universitario',
+        'edu.3.institucion':  'Universidad Miguel Hernández — Elche, España',
+        'edu.3.desc':         'Experiencia académica internacional en entorno universitario europeo.',
+        'edu.4.titulo':       'Curso CCNA v7 — Introducción a Redes',
+        'edu.4.institucion':  'Cisco Networking Academy',
+        'edu.4.periodo':      'Completado',
+        'edu.4.desc':         'Fundamentos de redes, protocolos TCP/IP y configuración básica.',
+        'edu.5.titulo':       'Curso Python Experto +70 horas',
+        'edu.5.institucion':  'Udemy',
+        'edu.5.periodo':      'En curso',
+        'edu.5.desc':         'Python avanzado: estructuras de datos, automatizaciones y scripting.',
+        'edu.6.titulo':       'Bachiller en Economía — Escuela Bilingüe',
+        'edu.6.institucion':  'Colegio San Antonio',
+        'edu.6.desc':         'Modalidad bilingüe español / inglés. Base en administración y pensamiento analítico.',
+
+        /* Contacto */
+        'contacto.tag':    'Contacto',
+        'contacto.titulo': '¿Hablamos sobre <span class="texto-gradiente">el rol</span>?',
+        'contacto.desc':   'Disponible para roles remotos full-time, part-time o proyectos. Puedes contactarme por email o directamente en LinkedIn.',
+      },
+
+      /* ────────────────────────────────────────────────────────────────────
+         ENGLISH — complete translation of all content
+         ──────────────────────────────────────────────────────────────────── */
+      en: {
+
+        /* Navigation */
+        'nav.about':        'About',
+        'nav.stack':        'Stack',
+        'nav.proyectos':    'Projects',
+        'nav.experiencia':  'Experience',
+        'nav.educacion':    'Education',
+        'nav.contacto':     'Contact',
+
+        /* Hero */
+        'hero.badge':       'Open to new opportunities',
+        'hero.rol':         'Software Developer · Automations · Python · SQL',
+        'hero.descripcion': 'Software developer specializing in automations, Python and artificial intelligence. Experience in SQL, data analysis and full stack development. Available for remote work.',
+        'hero.email':       'Email',
+        'hero.stat1':       'Year of experience',
+        'hero.stat2':       'Years studying dev',
+        'hero.stat3':       'Stack: front + back + DB',
+        'hero.stat4':       'English',
+
+        /* About */
+        'about.tag':          'About me',
+        'about.titulo':       'Developer who learns <span class="texto-gradiente">fast</span>',
+        'about.subtitulo':    "Hi, I'm Martina",
+        'about.p1':           "Software developer with experience in SQL, data analysis and full stack development. Currently working at TELPIN and finishing a Full Stack Web Development Diploma at UADE.",
+        'about.p2':           "I'm specializing in automations, Python and artificial intelligence. Looking for a remote role where I can contribute from day one and keep growing technically.",
+        'about.ubicacion':    'Pinamar, Buenos Aires, Argentina',
+        'about.idiomas':      'Spanish (native) · English B2',
+        'about.foco':         'Python · SQL · Automations · AI',
+        'about.disponibilidad': 'Remote · Full-time · Part-time',
+        'about.busco1.titulo': 'Automations',
+        'about.busco1.desc':   'Workflows, scripts and integrations that solve problems on their own.',
+        'about.busco2.titulo': 'Python & AI',
+        'about.busco2.desc':   'Going deeper into Python, Claude API and OpenAI for real projects.',
+        'about.busco3.titulo': 'Remote work',
+        'about.busco3.desc':   'Available in any time zone. Strong preference for 100% remote.',
+
+        /* Tech stack */
+        'stack.tag':           'Tech stack',
+        'stack.titulo':        'Tools I <span class="texto-gradiente">work with</span>',
+        'stack.cat.auto':      'Current specialization',
+        'stack.nota.auto':     '↑ Main active learning focus',
+        'stack.nivel.intermedio': 'Intermediate',
+        'stack.nivel.avanzado':   'Advanced',
+        'stack.cat1':          'Languages',
+        'stack.cat2':          'Backend',
+        'stack.cat3':          'Databases',
+        'stack.cat4':          'Tools',
+
+        /* Projects */
+        'proyectos.tag':                  'Projects',
+        'proyectos.titulo':               'Things I <span class="texto-gradiente">built</span>',
+        'proyectos.subtitulo':            'Academic and personal projects. Filter by type.',
+        'proyectos.filtro.todos':         'All',
+        'proyectos.filtro.web':           'Web / Full Stack',
+        'proyectos.filtro.automatizacion':'Automation',
+        'proyectos.filtro.bot':           'Bot',
+        'proyectos.vacio':                'No projects in this category yet.',
+        'proyectos.ver_github':           'GitHub',
+        'proyectos.ver_demo':             'Demo',
+
+        /* Experience */
+        'exp.tag':     'Experience',
+        'exp.titulo':  'Professional <span class="texto-gradiente">background</span>',
+        'exp.1.rol':     'Systems Analyst / Junior Developer',
+        'exp.1.periodo': '2024 — Present',
+        'exp.1.empresa': 'Cooperativa Telefónica de Pinamar Ltda. (TELPIN)',
+        'exp.1.desc':    'Development, optimization and maintenance of SQL queries for internal systems. Data analysis, report generation and operational support for multiple departments, contributing to process optimization and efficient data management.',
+        'exp.2.rol':     'University Final Project — Full Stack Developer',
+        'exp.2.periodo': '2025',
+        'exp.2.empresa': 'Universidad Argentina de la Empresa (UADE)',
+        'exp.2.desc':    'Animal shelter management system as a university final project. Backend in Java with Spring Boot, REST APIs and JWT authentication. Frontend with HTML, CSS and JavaScript. MySQL database, API testing with Postman and version control with Git.',
+
+        /* Education */
+        'edu.tag':    'Education',
+        'edu.titulo': 'Education & <span class="texto-gradiente">certifications</span>',
+        'edu.1.titulo':       'Associate Degree in Software Development',
+        'edu.1.institucion':  'Universidad Argentina de la Empresa (UADE)',
+        'edu.1.desc':         'Full degree: programming, databases, systems and web development.',
+        'edu.2.titulo':       'Full Stack Web Development Diploma',
+        'edu.2.institucion':  'Universidad Argentina de la Empresa (UADE)',
+        'edu.2.desc':         'Specialization in integrated web development: frontend and backend.',
+        'edu.3.titulo':       'International Exchange Program',
+        'edu.3.institucion':  'Universidad Miguel Hernández — Elche, Spain',
+        'edu.3.desc':         'International academic experience at a European university.',
+        'edu.4.titulo':       'CCNA v7 Course — Introduction to Networks',
+        'edu.4.institucion':  'Cisco Networking Academy',
+        'edu.4.periodo':      'Completed',
+        'edu.4.desc':         'Networking fundamentals, TCP/IP protocols and basic device configuration.',
+        'edu.5.titulo':       'Python Expert Course (+70 hours)',
+        'edu.5.institucion':  'Udemy',
+        'edu.5.periodo':      'In progress',
+        'edu.5.desc':         'Advanced Python: data structures, automations and scripting.',
+        'edu.6.titulo':       'Bilingual HS Diploma — Economics & Administration',
+        'edu.6.institucion':  'Colegio San Antonio',
+        'edu.6.desc':         'Bilingual program (Spanish / English). Foundation in business and analytical thinking.',
+
+        /* Contact */
+        'contacto.tag':    'Contact',
+        'contacto.titulo': "Let's talk about <span class=\"texto-gradiente\">the role</span>",
+        'contacto.desc':   "Available for remote full-time, part-time or project roles. Feel free to reach out by email or connect with me on LinkedIn.",
+      }
+    };
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       ESTADO GLOBAL
+       ══════════════════════════════════════════════════════════════════════ */
+    let idiomaActual    = 'es';   /* idioma activo: 'es' o 'en'            */
+    let proyectosTodos  = [];     /* todos los proyectos cargados           */
+    let categoriaActiva = 'todos';/* filtro activo en la sección proyectos  */
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       FUNCIÓN: setLang(lang)
+       Cambia el idioma de toda la página actualizando los elementos
+       que tienen el atributo [data-i18n] con la clave correspondiente.
+
+       CÓMO AGREGAR UN NUEVO ELEMENTO TRADUCIBLE:
+       1. En el HTML: <elemento data-i18n="clave">texto por defecto</elemento>
+       2. En traducciones.es: agregar 'clave': 'texto en español'
+       3. En traducciones.en: agregar 'clave': 'text in English'
+       ══════════════════════════════════════════════════════════════════════ */
+    function setLang(lang) {
+      idiomaActual = lang;
+
+      /* Marcar el botón activo del toggle */
+      document.getElementById('btnEs').classList.toggle('activo', lang === 'es');
+      document.getElementById('btnEn').classList.toggle('activo', lang === 'en');
+
+      /* Actualizar todos los elementos traducibles */
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key   = el.getAttribute('data-i18n');
+        const valor = traducciones[lang][key];
+        if (valor !== undefined) el.innerHTML = valor;
+      });
+
+      /* Volver a renderizar los proyectos con el nuevo idioma */
+      renderizarProyectos(proyectosTodos, categoriaActiva);
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       FUNCIÓN: toggleMenu()
+       Abre/cierra el menú de navegación en móvil (hamburger)
+       ══════════════════════════════════════════════════════════════════════ */
+    function toggleMenu() {
+      const menu = document.getElementById('navLinks');
+      menu.classList.toggle('abierto');
+    }
+
+    /* Cerrar el menú al hacer clic en un link (mejora UX móvil) */
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('abierto');
+      });
+    });
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       INTERSECTION OBSERVER — animaciones de entrada al hacer scroll
+       Los elementos con clase .fade-in aparecen suavemente al entrar
+       en el viewport. Se observa una sola vez por elemento.
+       ══════════════════════════════════════════════════════════════════════ */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); /* dejar de observar una vez visible */
+        }
+      });
+    }, { threshold: 0.1 });
+
+    /* Observar todos los elementos con .fade-in */
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       FUNCIÓN: filtrarProyectos(boton)
+       Maneja los botones de filtro de la sección proyectos.
+       ══════════════════════════════════════════════════════════════════════ */
+    function filtrarProyectos(boton) {
+      /* Quitar estado activo de todos los botones */
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo'));
+      boton.classList.add('activo');
+
+      /* Guardar categoría y re-renderizar */
+      categoriaActiva = boton.getAttribute('data-categoria');
+      renderizarProyectos(proyectosTodos, categoriaActiva);
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       FUNCIÓN: renderizarProyectos(proyectos, categoria)
+       Genera y muestra las tarjetas de proyectos en el grid.
+       Si no hay proyectos para el filtro activo, muestra un mensaje vacío.
+
+       Parámetros:
+         proyectos → array con todos los proyectos cargados
+         categoria → string: 'todos' | 'web' | 'automatizacion' | 'bot'
+       ══════════════════════════════════════════════════════════════════════ */
+    function renderizarProyectos(proyectos, categoria) {
+      const grid = document.getElementById('proyectosGrid');
+      const t    = traducciones[idiomaActual];
+
+      /* Filtrar según categoría */
+      const filtrados = (categoria === 'todos')
+        ? proyectos
+        : proyectos.filter(p => p.categoria === categoria);
+
+      /* Sin resultados */
+      if (!filtrados.length) {
+        grid.innerHTML = `<div class="proyectos-vacio">${t['proyectos.vacio']}</div>`;
+        return;
+      }
+
+      /* Generar HTML de cada tarjeta */
+      grid.innerHTML = filtrados.map(p => {
+
+        /* Imagen o placeholder con el nombre del proyecto.
+           Si hay imagen pero el archivo no existe, el onerror oculta el <img>
+           y muestra el <div> hermano que está oculto por defecto. */
+        const imgHTML = p.imagen
+          ? `<img class="proyecto-img" src="${p.imagen}" alt="${p.titulo}"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+             <div class="proyecto-img-placeholder" style="display:none"><span>// ${p.titulo}</span></div>`
+          : `<div class="proyecto-img-placeholder"><span>// ${p.titulo}</span></div>`;
+
+        /* Chips de tecnologías */
+        const tagsHTML = (p.tags || [])
+          .map(tag => `<span class="tag">${tag}</span>`)
+          .join('');
+
+        /* Botón GitHub */
+        const githubBtn = p.github_url
+          ? `<a href="${p.github_url}" target="_blank" rel="noopener" class="proyecto-link">
+               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+               </svg>
+               ${t['proyectos.ver_github']}
+             </a>`
+          : '';
+
+        /* Botón Demo */
+        const demoBtn = p.preview_url
+          ? `<a href="${p.preview_url}" target="_blank" rel="noopener" class="proyecto-link">
+               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                 <polyline points="15 3 21 3 21 9"/>
+                 <line x1="10" y1="14" x2="21" y2="3"/>
+               </svg>
+               ${t['proyectos.ver_demo']}
+             </a>`
+          : '';
+
+        return `
+          <div class="proyecto-card fade-in visible">
+            ${imgHTML}
+            <div class="proyecto-body">
+              <div class="proyecto-tipo">${p.tipo || p.categoria || ''}</div>
+              <h3 class="proyecto-titulo">${p.titulo}</h3>
+              <p class="proyecto-descripcion">${p.descripcion}</p>
+              <div class="proyecto-tags">${tagsHTML}</div>
+              <div class="proyecto-links">${githubBtn}${demoBtn}</div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       FUNCIÓN: cargarProyectos()
+       Intenta cargar los proyectos desde portfolio-projects.json.
+       Si falla (archivo abierto localmente sin servidor), usa el proyecto
+       real del CV como ejemplo de fallback para que la sección no quede vacía.
+
+       PARA AGREGAR PROYECTOS REALES:
+       Editar portfolio-projects.json siguiendo el formato existente.
+       ══════════════════════════════════════════════════════════════════════ */
+    async function cargarProyectos() {
+
+      /* Proyecto de fallback — el proyecto final universitario real */
+      const fallback = [
+        {
+          id: 'refugio-animales',
+          titulo: 'Sistema de Gestión — Refugio de Animales',
+          descripcion: 'Sistema full stack universitario. Backend con Java y Spring Boot, REST APIs y autenticación JWT. Base de datos MySQL. Frontend con HTML, CSS y JavaScript. Testing con Postman.',
+          tipo: 'Full Stack',
+          categoria: 'web',
+          tags: ['Java', 'Spring Boot', 'REST API', 'JWT', 'MySQL', 'HTML/CSS/JS', 'Postman', 'Git'],
+          github_url: '',
+          preview_url: '',
+          imagen: ''
+        }
+      ];
+
+      try {
+        const res = await fetch('portfolio-projects.json');
+        if (!res.ok) throw new Error('JSON no disponible');
+        const data = await res.json();
+        proyectosTodos = data.portfolio?.length ? data.portfolio : fallback;
+      } catch {
+        /* Sin servidor local o JSON ausente → usar fallback */
+        proyectosTodos = fallback;
+      }
+
+      renderizarProyectos(proyectosTodos, 'todos');
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       FUNCIÓN: animarBarras()
+       Anima las barras de nivel del stack cuando la sección entra en pantalla.
+       Usa IntersectionObserver para disparar la animación solo una vez.
+
+       PARA CAMBIAR LOS NIVELES: editar el atributo data-width (0-100) en
+       cada .skill-bar-fill dentro del HTML (sección #stack).
+       ══════════════════════════════════════════════════════════════════════ */
+    function animarBarras() {
+      const fills = document.querySelectorAll('.skill-bar-fill');
+      if (!fills.length) return;
+
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            /* Pequeño delay para que se vea después del fade-in */
+            setTimeout(() => {
+              fills.forEach(fill => {
+                fill.style.width = fill.getAttribute('data-width') + '%';
+              });
+            }, 250);
+            barObserver.disconnect(); /* disparar solo una vez */
+          }
+        });
+      }, { threshold: 0.25 });
+
+      const stackSection = document.getElementById('stack');
+      if (stackSection) barObserver.observe(stackSection);
+    }
+
+
+    /* ══════════════════════════════════════════════════════════════════════
+       INICIALIZACIÓN — se ejecuta cuando el DOM está listo
+       ══════════════════════════════════════════════════════════════════════ */
+    document.addEventListener('DOMContentLoaded', () => {
+      cargarProyectos();   /* cargar y mostrar proyectos */
+      setLang('es');       /* idioma inicial: español    */
+      animarBarras();      /* preparar animación de barras */
+    });
+
+  </script>
+</body>
+</html>
