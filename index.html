@@ -7,7 +7,7 @@
   <!-- ── TÍTULO Y META ──────────────────────────────────────────────────── -->
   <title>Martina Virgilli — Software Developer · Junior Dev</title>
   <meta name="description"
-        content="Software developer con experiencia en SQL, análisis de datos y desarrollo full stack. Especialización en automatizaciones, Python e IA. Disponible para trabajo remoto.">
+        content="Software developer con experiencia en SQL, análisis de datos y desarrollo full stack. Especialización en automatizaciones, Python e IA. Preferencia sobre trabajo remoto o híbrido.">
 
   <!-- ── FUENTES GOOGLE ─────────────────────────────────────────────────── -->
   <!-- Space Grotesk → títulos y headings                                   -->
@@ -300,6 +300,14 @@
       border-radius: 2px;
       transition: all 0.3s;
     }
+
+    /* Hamburger → X cuando el menú está abierto */
+    .nav-hamburger.abierto span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .nav-hamburger.abierto span:nth-child(2) { opacity: 0; width: 0; }
+    .nav-hamburger.abierto span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Link de Contacto exclusivo para el menú mobile — oculto en desktop */
+    .nav-contacto-mobile { display: none; }
 
     /* ══════════════════════════════════════════════════════════════════════
        SECCIÓN HERO
@@ -1000,7 +1008,8 @@
 
       /* ABOUT: apilar columnas verticalmente */
       .about-grid { grid-template-columns: 1fr; gap: 28px; }
-      .busco-grid  { grid-template-columns: 1fr; }
+      /* Tablet → 2 columnas (mejor que saltar directo a 1) */
+      .busco-grid { grid-template-columns: repeat(2, 1fr); }
 
       /* STACK: una sola columna en móvil */
       .stack-grid { grid-template-columns: 1fr; }
@@ -1011,11 +1020,12 @@
       .timeline-item    { padding-left: 44px; }
       .timeline-dot     { left: 4px; }
 
-      /* EDUCACIÓN: 1 columna */
-      .educacion-grid { grid-template-columns: 1fr; }
+      /* EDUCACIÓN y PROYECTOS: 2 columnas en tablet */
+      .educacion-grid { grid-template-columns: repeat(2, 1fr); }
+      .proyectos-grid { grid-template-columns: repeat(2, 1fr); }
 
-      /* PROYECTOS: 1 columna */
-      .proyectos-grid { grid-template-columns: 1fr; }
+      /* Mostrar link de Contacto en el menú mobile */
+      .nav-contacto-mobile { display: block; }
     }
 
     /* ── Móvil pequeño (≤ 480px) ────────────────────────────────────────── */
@@ -1029,7 +1039,9 @@
 
       /* Hero título más pequeño */
       .hero-titulo { font-size: 2rem; }
-      .hero-stats  { gap: 18px; }
+      /* Stats en grilla 2×2 en móvil pequeño */
+      .hero-stats  { gap: 14px; }
+      .stat-item   { flex: 0 0 calc(50% - 7px); }
       .stat-numero { font-size: 1.55rem; }
 
       /* Tarjetas de contacto en columna */
@@ -1050,6 +1062,11 @@
 
       /* Busco items en columna */
       .busco-item { flex-direction: row; }
+
+      /* 1 columna en móvil pequeño (override del repeat(2,1fr) de tablet) */
+      .busco-grid     { grid-template-columns: 1fr; }
+      .educacion-grid { grid-template-columns: 1fr; }
+      .proyectos-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1075,6 +1092,8 @@
           <li><a href="#proyectos"   data-i18n="nav.proyectos">Proyectos</a></li>
           <li><a href="#experiencia" data-i18n="nav.experiencia">Experiencia</a></li>
           <li><a href="#educacion"   data-i18n="nav.educacion">Educación</a></li>
+          <!-- Solo visible en el menú mobile — en desktop está el botón .nav-cta -->
+          <li class="nav-contacto-mobile"><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
 
         <!-- Toggle de idioma + botón contacto + hamburger -->
@@ -1106,7 +1125,7 @@
         <!-- Badge de disponibilidad con punto pulsante -->
         <div class="hero-badge">
           <span class="dot"></span>
-          <span data-i18n="hero.badge">Disponible para nuevos roles</span>
+          <span data-i18n="hero.badge">Disponible para nuevas oportunidades</span>
         </div>
 
         <!-- Nombre completo -->
@@ -1124,7 +1143,7 @@
         <p class="hero-descripcion" data-i18n="hero.descripcion">
           Desarrolladora de software especializada en automatizaciones, Python e inteligencia
           artificial. Con experiencia en SQL, análisis de datos y desarrollo full stack.
-          Disponible para trabajo remoto.
+          Preferencia sobre trabajo remoto o híbrido.
         </p>
 
         <!-- ✏️ LINKS SOCIALES — editar las URLs acá directamente -->
@@ -1198,7 +1217,7 @@
       <div class="seccion-header fade-in">
         <span class="tag" data-i18n="about.tag">Sobre mí</span>
         <h2 class="seccion-titulo" data-i18n="about.titulo">
-          Desarrolladora que aprende <span class="texto-gradiente">rápido</span>
+          Desarrolladora en <span class="texto-gradiente">potencia</span>
         </h2>
       </div>
 
@@ -1215,7 +1234,8 @@
           </p>
           <p data-i18n="about.p2">
             Me estoy especializando en automatizaciones, Python e inteligencia artificial.
-            Busco un rol remoto donde aportar desde el primer día y seguir creciendo técnicamente.
+            Mi objetivo es llegar a manejar frameworks de IA y aplicar estas tecnologías para resolver problemas reales
+            en empresas innovadoras. Siempre estoy abierta a crecer profesionalmente y aprender cosas nuevas.
           </p>
         </div>
 
@@ -1377,10 +1397,10 @@
             <div class="skill-bar-item">
               <div class="skill-bar-label">
                 <span>Python</span>
-                <span data-i18n="stack.nivel.intermedio">Intermedio</span>
+                <span data-i18n="stack.nivel.intermedioalto">Intermedio Alto</span>
               </div>
               <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="62"></div>
+                <div class="skill-bar-fill" data-width="68"></div>
               </div>
             </div>
             <div class="skill-bar-item">
@@ -1389,25 +1409,25 @@
                 <span data-i18n="stack.nivel.avanzado">Avanzado</span>
               </div>
               <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="82"></div>
+                <div class="skill-bar-fill" data-width="80"></div>
               </div>
             </div>
             <div class="skill-bar-item">
               <div class="skill-bar-label">
                 <span>Java / Spring Boot</span>
-                <span data-i18n="stack.nivel.intermedio">Intermedio</span>
+                <span data-i18n="stack.nivel.intermediobajo">Intermedio Bajo</span>
               </div>
               <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="65"></div>
+                <div class="skill-bar-fill" data-width="40"></div>
               </div>
             </div>
             <div class="skill-bar-item">
               <div class="skill-bar-label">
                 <span>JavaScript / HTML / CSS</span>
-                <span data-i18n="stack.nivel.intermedio">Intermedio</span>
+                <span data-i18n="stack.nivel.intermedioalto">Intermedio Alto</span>
               </div>
               <div class="skill-bar-track">
-                <div class="skill-bar-fill" data-width="70"></div>
+                <div class="skill-bar-fill" data-width="58"></div>
               </div>
             </div>
           </div>
@@ -1746,10 +1766,10 @@
         <span class="tag" style="margin-bottom: 20px; display: inline-block;"
               data-i18n="contacto.tag">Contacto</span>
         <h2 class="seccion-titulo" data-i18n="contacto.titulo">
-          ¿Hablamos sobre <span class="texto-gradiente">el rol</span>?
+          Hablemos sobre <span class="texto-gradiente">trabajo</span>
         </h2>
         <p data-i18n="contacto.desc">
-          Disponible para roles remotos full-time, part-time o proyectos.
+          Disponible para roles remotos o híbridos full-time, part-time o proyectos.
           Puedes contactarme por email o directamente en LinkedIn.
         </p>
 
@@ -1839,9 +1859,9 @@
         'nav.contacto':     'Contacto',
 
         /* Hero */
-        'hero.badge':       'Disponible para nuevos roles',
+        'hero.badge':       'Disponible para nuevas oportunidades',
         'hero.rol':         'Software Developer · Automatizaciones · Python · SQL',
-        'hero.descripcion': 'Desarrolladora de software especializada en automatizaciones, Python e inteligencia artificial. Con experiencia en SQL, análisis de datos y desarrollo full stack. Disponible para trabajo remoto.',
+        'hero.descripcion': 'Desarrolladora de software especializada en automatizaciones, Python e inteligencia artificial. Con experiencia en SQL, análisis de datos y desarrollo full stack. Preferencia sobre trabajo remoto o híbrido.',
         'hero.email':       'Email',
         'hero.stat1':       'Año de experiencia',
         'hero.stat2':       'Años estudiando dev',
@@ -1850,10 +1870,10 @@
 
         /* Sobre mí */
         'about.tag':          'Sobre mí',
-        'about.titulo':       'Desarrolladora que aprende <span class="texto-gradiente">rápido</span>',
+        'about.titulo':       'Desarrolladora en <span class="texto-gradiente">potencia</span>',
         'about.subtitulo':    'Hola, soy Martina',
         'about.p1':           'Desarrolladora de software con experiencia en SQL, análisis de datos y desarrollo full stack. Actualmente trabajo en TELPIN y estoy finalizando la Diplomatura en Desarrollo Web Full Stack en UADE.',
-        'about.p2':           'Me estoy especializando en automatizaciones, Python e inteligencia artificial. Busco un rol remoto donde aportar desde el primer día y seguir creciendo técnicamente.',
+        'about.p2':           'Me estoy especializando en automatizaciones, Python e inteligencia artificial. Mi objetivo es llegar a manejar frameworks de IA y aplicar estas tecnologías para resolver problemas reales en empresas innovadoras. Siempre estoy abierta a crecer profesionalmente y aprender cosas nuevas.',
         'about.ubicacion':    'Pinamar, Buenos Aires, Argentina',
         'about.idiomas':      'Español (nativo) · Inglés B2',
         'about.foco':         'Python · SQL · Automatizaciones · IA',
@@ -1870,7 +1890,9 @@
         'stack.titulo':        'Las herramientas con las que <span class="texto-gradiente">trabajo</span>',
         'stack.cat.auto':      'Especialización en curso',
         'stack.nota.auto':     '↑ Foco principal de aprendizaje activo',
-        'stack.nivel.intermedio': 'Intermedio',
+        'stack.nivel.bajo':    'Bajo',
+        'stack.nivel.intermediobajo': 'Intermedio Bajo',
+        'stack.nivel.intermedioalto': 'Intermedio Alto',
         'stack.nivel.avanzado':   'Avanzado',
         'stack.cat1':          'Lenguajes',
         'stack.cat2':          'Backend',
@@ -1927,8 +1949,8 @@
 
         /* Contacto */
         'contacto.tag':    'Contacto',
-        'contacto.titulo': '¿Hablamos sobre <span class="texto-gradiente">el rol</span>?',
-        'contacto.desc':   'Disponible para roles remotos full-time, part-time o proyectos. Puedes contactarme por email o directamente en LinkedIn.',
+        'contacto.titulo': 'Hablemos sobre <span class="texto-gradiente">trabajo</span>',
+        'contacto.desc':   'Disponible para roles remotos o híbridos full-time, part-time o proyectos. Puedes contactarme por email o directamente en LinkedIn.',
       },
 
       /* ────────────────────────────────────────────────────────────────────
@@ -1947,7 +1969,7 @@
         /* Hero */
         'hero.badge':       'Open to new opportunities',
         'hero.rol':         'Software Developer · Automations · Python · SQL',
-        'hero.descripcion': 'Software developer specializing in automations, Python and artificial intelligence. Experience in SQL, data analysis and full stack development. Available for remote work.',
+        'hero.descripcion': 'Software developer specializing in automations, Python and artificial intelligence. Experience in SQL, data analysis and full stack development. Preference for remote or hybrid work.',
         'hero.email':       'Email',
         'hero.stat1':       'Year of experience',
         'hero.stat2':       'Years studying dev',
@@ -1956,10 +1978,10 @@
 
         /* About */
         'about.tag':          'About me',
-        'about.titulo':       'Developer who learns <span class="texto-gradiente">fast</span>',
-        'about.subtitulo':    "Hi, I'm Martina",
+        'about.titulo':       'Up-and-coming <span class="texto-gradiente">developer</span>',
+        'about.subtitulo':    "Hi! I'm Martina",
         'about.p1':           "Software developer with experience in SQL, data analysis and full stack development. Currently working at TELPIN and finishing a Full Stack Web Development Diploma at UADE.",
-        'about.p2':           "I'm specializing in automations, Python and artificial intelligence. Looking for a remote role where I can contribute from day one and keep growing technically.",
+        'about.p2':           "I'm specializing in automations, Python and artificial intelligence. My goal is to become proficient in AI frameworks and apply these technologies to solve real-world problems in innovative companies. Always open to growing professionally and learning new things.",
         'about.ubicacion':    'Pinamar, Buenos Aires, Argentina',
         'about.idiomas':      'Spanish (native) · English B2',
         'about.foco':         'Python · SQL · Automations · AI',
@@ -1976,7 +1998,9 @@
         'stack.titulo':        'Tools I <span class="texto-gradiente">work with</span>',
         'stack.cat.auto':      'Current specialization',
         'stack.nota.auto':     '↑ Main active learning focus',
-        'stack.nivel.intermedio': 'Intermediate',
+        'stack.nivel.bajo':    'Low',
+        'stack.nivel.intermediobajo': 'Low Intermediate',
+        'stack.nivel.intermedioalto': 'High Intermediate',
         'stack.nivel.avanzado':   'Advanced',
         'stack.cat1':          'Languages',
         'stack.cat2':          'Backend',
@@ -2033,8 +2057,8 @@
 
         /* Contact */
         'contacto.tag':    'Contact',
-        'contacto.titulo': "Let's talk about <span class=\"texto-gradiente\">the role</span>",
-        'contacto.desc':   "Available for remote full-time, part-time or project roles. Feel free to reach out by email or connect with me on LinkedIn.",
+        'contacto.titulo': "Let's talk about <span class=\"texto-gradiente\">work</span>",
+        'contacto.desc':   "Available for remote or hybrid full-time, part-time or project roles. Feel free to reach out by email or connect with me on LinkedIn.",
       }
     };
 
@@ -2081,15 +2105,30 @@
        Abre/cierra el menú de navegación en móvil (hamburger)
        ══════════════════════════════════════════════════════════════════════ */
     function toggleMenu() {
-      const menu = document.getElementById('navLinks');
+      const menu      = document.getElementById('navLinks');
+      const hamburger = document.getElementById('hamburger');
       menu.classList.toggle('abierto');
+      hamburger.classList.toggle('abierto');
     }
 
     /* Cerrar el menú al hacer clic en un link (mejora UX móvil) */
     document.querySelectorAll('.nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('navLinks').classList.remove('abierto');
+        document.getElementById('hamburger').classList.remove('abierto');
       });
+    });
+
+    /* Cerrar el menú al hacer clic fuera de él */
+    document.addEventListener('click', (e) => {
+      const menu      = document.getElementById('navLinks');
+      const hamburger = document.getElementById('hamburger');
+      if (menu.classList.contains('abierto') &&
+          !menu.contains(e.target) &&
+          !hamburger.contains(e.target)) {
+        menu.classList.remove('abierto');
+        hamburger.classList.remove('abierto');
+      }
     });
 
 
@@ -2283,6 +2322,15 @@
       setLang('es');       /* idioma inicial: español    */
       animarBarras();      /* preparar animación de barras */
     });
+
+    /* ══════════════════════════════════════════════════════════════════════
+       FUNCIÓN: animarBarras()
+       Anima las barras de nivel del stack cuando la sección entra en pantalla.
+       Usa IntersectionObserver para disparar la animación solo una vez.
+
+       PARA CAMBIAR LOS NIVELES: editar el atributo data-width (0-100) en
+       cada .skill-bar-fill dentro del HTML (sección #stack).
+       ══════════════════════════════════════════════════════════════════════ */
 
   </script>
 </body>
