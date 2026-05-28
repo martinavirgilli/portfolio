@@ -35,8 +35,8 @@
       --blanco:           #EDF0F7;   /* Blanco frío    — texto principal              */
       --gris:             #8892B4;   /* Azul-gris      — texto secundario             */
       --borde:            rgba(58, 70, 190, 0.25);
-      --gradiente:        linear-gradient(135deg, #3A46BE, #866F96);
-      --gradiente-texto:  linear-gradient(135deg, #D0CBE8, #866F96);
+      --gradiente:        linear-gradient(135deg, #3A46BE, #866F96, #DD8C6F);
+      --gradiente-texto:  linear-gradient(135deg, #D0CBE8, #866F96, #DD8C6F);
     }
 
     /* ══════════════════════════════════════════════════════════════════════
@@ -329,7 +329,7 @@
       transform: translate(-50%, -50%);
       /* min() evita que la nebulosa supere el ancho del viewport en móvil */
       width: min(600px, 100vw); height: min(600px, 100vw);
-      background: radial-gradient(ellipse, rgba(131,80,196,0.09) 0%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(58,70,190,0.10) 0%, rgba(221,140,111,0.04) 55%, transparent 70%);
       pointer-events: none;
     }
 
