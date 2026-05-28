@@ -7,7 +7,7 @@
       "tipo": "Full Stack",
       "categoria": "web",
       "tags": ["Java", "Spring Boot", "REST API", "JWT", "MySQL", "HTML / CSS / JS", "Postman", "Git"],
-      "github_url": "",
+      "github_url": "https://github.com/martinavirgilli/RefugioDelMar",
       "preview_url": "https://refugio-del-mar.netlify.app",
       "imagen": "",
       "destacado": true

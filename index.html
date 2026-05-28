@@ -752,17 +752,22 @@
     .proyecto-link {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 6px 13px;
+      gap: 6px;
+      padding: 8px 16px;
       border-radius: 8px;
-      border: 1px solid var(--borde);
-      color: var(--gris);
+      border: 1px solid rgba(131, 80, 196, 0.5);
+      color: var(--acento-lila);
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      transition: color 0.2s, border-color 0.2s;
+      background: rgba(131, 80, 196, 0.08);
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
-    .proyecto-link:hover { color: var(--blanco); border-color: var(--acento-violeta); }
+    .proyecto-link:hover {
+      color: var(--blanco);
+      border-color: var(--acento-violeta);
+      background: rgba(131, 80, 196, 0.22);
+    }
 
     /* Mensaje cuando no hay proyectos para el filtro activo */
     .proyectos-vacio {
@@ -1910,7 +1915,7 @@
         'proyectos.filtro.automatizacion':'Automatización',
         'proyectos.filtro.bot':           'Bot',
         'proyectos.vacio':                'No hay proyectos en esta categoría todavía.',
-        'proyectos.ver_github':           'GitHub',
+        'proyectos.ver_github':           'Código',
         'proyectos.ver_demo':             'Demo',
 
         /* Experiencia */
@@ -2021,7 +2026,7 @@
         'proyectos.filtro.automatizacion':'Automation',
         'proyectos.filtro.bot':           'Bot',
         'proyectos.vacio':                'No projects in this category yet.',
-        'proyectos.ver_github':           'GitHub',
+        'proyectos.ver_github':           'Code',
         'proyectos.ver_demo':             'Demo',
 
         /* Experience */
