@@ -1,26 +1,28 @@
 {
   "portfolio": [
     {
-      "id": "refugio-animales",
-      "titulo": "Sistema de Gestión — Refugio de Animales",
-      "descripcion": "Proyecto final de diplomatura. Sistema web full stack para gestión de animales y adoptantes. Backend en Java con Spring Boot, REST API y autenticación JWT. Base de datos MySQL, Frontend en HTML/CSS/JS, testing con Postman y versionado con Git.",
+      "id": "refugio-del-mar",
+      "titulo": "Refugio del Mar",
+      "descripcion": "Aplicación full stack para un refugio de animales, con dos caras: el catálogo público donde alguien se enamora de un animal y pide conocerlo, y el panel interno donde el equipo gestiona fichas, visitas, adopciones y voluntarios. Frontend en React 19 con Vite y Tailwind, backend en Django REST con autenticación JWT y PostgreSQL. Permisos validados siempre en el servidor, con tests que lo fijan, y accesibilidad AA verificada.",
       "tipo": "Full Stack",
       "categoria": "web",
-      "tags": ["Java", "Spring Boot", "REST API", "JWT", "MySQL", "HTML / CSS / JS", "Postman", "Git"],
+      "tags": ["React", "Vite", "Tailwind CSS", "Django", "Django REST Framework", "JWT", "PostgreSQL", "Netlify", "Render"],
       "github_url": "https://github.com/martinavirgilli/RefugioDelMar",
       "preview_url": "https://refugio-del-mar.netlify.app",
-      "imagen": "",
+      "imagen": "assets/portfolio/refugio-del-mar.jpg",
+      "destacado": true
+    },
+    {
+      "id": "carpe-diem-pinamar",
+      "titulo": "Carpe Diem — Alquileres Pinamar",
+      "descripcion": "Sitio promocional de alquileres temporarios: cuatro departamentos con ficha propia, galería, mapa de ubicación aproximada y calendario de disponibilidad real, sincronizado por iCal con Google Calendar, Airbnb y Booking. La consulta abre WhatsApp con las fechas elegidas ya escritas en el mensaje. Hecho sin frameworks ni compilación, con una función serverless para el calendario, y todo el contenido en un único archivo de datos para que lo mantenga alguien que no programa.",
+      "tipo": "Web",
+      "categoria": "web",
+      "tags": ["HTML / CSS / JS", "Leaflet", "iCal", "Netlify Functions", "PHP", "Node", "Python"],
+      "github_url": "https://github.com/martinavirgilli/carpe-diem-pinamar",
+      "preview_url": "https://carpediem-pinamar.netlify.app",
+      "imagen": "assets/portfolio/carpe-diem-pinamar.png",
       "destacado": true
     }
-  ],
-
-  "instrucciones": {
-    "como_agregar_proyecto": "Copiá uno de los bloques de arriba, cambiá el 'id' por algo único, completá los datos reales y guardá el archivo. El portfolio se actualiza solo.",
-    "github_url": "Cuando el repositorio esté público en GitHub, pegá el link acá. El botón aparece automáticamente.",
-    "preview_url": "Si publicaste la web en Netlify, Vercel o GitHub Pages, pegá el link acá. Si no, dejalo vacío.",
-    "imagen": "Guardá una captura del proyecto en 'assets/portfolio/' con el nombre que pongas acá. Tamaño recomendado: 1200x800px.",
-    "tipo": "Etiqueta visible en la tarjeta: Full Stack, Automatización, Bot, Web, Script, etc.",
-    "categoria": "Para los filtros del portfolio: web | automatizacion | bot",
-    "destacado": "Los proyectos con 'destacado: true' aparecen primero."
-  }
+  ]
 }
