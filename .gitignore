@@ -1,0 +1,9 @@
+# Guía interna del portfolio — no se publica
+GUIA-PORTFOLIO.md
+
+# Sistema / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/

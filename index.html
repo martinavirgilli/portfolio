@@ -4,16 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ── TÍTULO Y META ──────────────────────────────────────────────────── -->
   <title>Martina Virgilli — Software Developer · Junior Dev</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <meta name="description"
         content="Software developer con experiencia en SQL, análisis de datos y desarrollo full stack. Especialización en automatizaciones, Python e IA. Preferencia sobre trabajo remoto o híbrido.">
 
-  <!-- ── FUENTES GOOGLE ─────────────────────────────────────────────────── -->
-  <!-- Space Grotesk → títulos y headings                                   -->
-  <!-- Inter          → cuerpo de texto                                     -->
-  <!-- JetBrains Mono → elementos técnicos / código                        -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -21,8 +16,6 @@
   <style>
     /* ══════════════════════════════════════════════════════════════════════
        PALETA DE COLORES
-       Basada en la paleta personalizada de Martina.
-       Para cambiar un color, edita SOLO esta sección :root.
        ══════════════════════════════════════════════════════════════════════ */
     :root {
       --fondo-principal:  #0E1225;   /* Cosmic Dark    — fondo base de toda la página */
@@ -55,7 +48,6 @@
     }
 
     /* ── Campo estelar de fondo (puntos CSS, no imágenes) ──────────────── */
-    /* Para quitar las estrellas basta con eliminar este bloque body::before */
     body::before {
       content: '';
       position: fixed;
@@ -136,7 +128,6 @@
     }
 
     /* ── Animación de entrada al hacer scroll ───────────────────────────── */
-    /* Agregar clase .fade-in a cualquier elemento para que aparezca suavemente */
     .fade-in {
       opacity: 0;
       transform: translateY(24px);
@@ -186,7 +177,6 @@
 
     /* ══════════════════════════════════════════════════════════════════════
        NAVEGACIÓN FIJA
-       Para cambiar los links del nav, edita la lista <ul class="nav-links">
        ══════════════════════════════════════════════════════════════════════ */
     nav {
       position: fixed;
@@ -312,7 +302,6 @@
 
     /* ══════════════════════════════════════════════════════════════════════
        SECCIÓN HERO
-       Para cambiar el contenido del hero, busca <section id="hero">
        ══════════════════════════════════════════════════════════════════════ */
     #hero {
       min-height: 100vh;
@@ -485,7 +474,7 @@
       margin-bottom: 24px;
     }
 
-    /* Avatar con iniciales — para agregar foto real, reemplaza este div por <img> */
+    /* Avatar con iniciales */
     .about-avatar {
       width: 60px; height: 60px;
       border-radius: 50%;
@@ -637,7 +626,6 @@
     }
 
     /* ── Barras de nivel de habilidad ───────────────────────────────────── */
-    /* Se animan cuando la sección entra en el viewport (ver JS: animarBarras) */
     .skill-bar-wrap { margin-top: 18px; display: flex; flex-direction: column; gap: 10px; }
     .skill-bar-item { display: flex; flex-direction: column; gap: 5px; }
     .skill-bar-label {
@@ -663,7 +651,6 @@
 
     /* ══════════════════════════════════════════════════════════════════════
        SECCIÓN PROYECTOS
-       Las cards se generan dinámicamente desde portfolio-projects.json (JS)
        ══════════════════════════════════════════════════════════════════════ */
     #proyectos { padding: 96px 0; }
 
@@ -780,7 +767,6 @@
 
     /* ══════════════════════════════════════════════════════════════════════
        SECCIÓN EXPERIENCIA — timeline vertical
-       Para agregar una entrada: copia un .timeline-item y edítalo
        ══════════════════════════════════════════════════════════════════════ */
     #experiencia { padding: 96px 0; background: rgba(64,43,71,0.28); }
 
@@ -880,7 +866,6 @@
 
     /* ══════════════════════════════════════════════════════════════════════
        SECCIÓN EDUCACIÓN
-       Para agregar una entrada: copia un .educacion-card y edítalo
        ══════════════════════════════════════════════════════════════════════ */
     #educacion { padding: 96px 0; }
 
@@ -1081,36 +1066,29 @@
 <body>
 
   <!-- ════════════════════════════════════════════════════════════════════════
-       NAVEGACIÓN FIJA
-       Para cambiar los links: edita los <a> dentro de .nav-links
-       Para cambiar el logo: edita el texto de .nav-logo
+       NAVEGACIÓN
        ════════════════════════════════════════════════════════════════════════ -->
   <nav>
     <div class="container">
       <div class="nav-inner">
 
-        <!-- Logo — iniciales MV, sin referencias a la marca personal -->
         <a href="#hero" class="nav-logo">MV</a>
 
-        <!-- Links de navegación por sección -->
         <ul class="nav-links" id="navLinks">
           <li><a href="#about"       data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="#stack"       data-i18n="nav.stack">Stack</a></li>
           <li><a href="#proyectos"   data-i18n="nav.proyectos">Proyectos</a></li>
           <li><a href="#experiencia" data-i18n="nav.experiencia">Experiencia</a></li>
           <li><a href="#educacion"   data-i18n="nav.educacion">Educación</a></li>
-          <!-- Solo visible en el menú mobile — en desktop está el botón .nav-cta -->
           <li class="nav-contacto-mobile"><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
 
-        <!-- Toggle de idioma + botón contacto + hamburger -->
         <div class="nav-controles">
           <div class="lang-toggle" aria-label="Cambiar idioma">
             <button class="lang-btn activo" id="btnEs" onclick="setLang('es')">ES</button>
             <button class="lang-btn"        id="btnEn" onclick="setLang('en')">EN</button>
           </div>
           <a href="#contacto" class="nav-cta" data-i18n="nav.contacto">Contacto</a>
-          <!-- Botón hamburger — visible solo en móvil -->
           <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú">
             <span></span><span></span><span></span>
           </button>
@@ -1122,43 +1100,36 @@
 
 
   <!-- ════════════════════════════════════════════════════════════════════════
-       HERO — primera sección visible
+       HERO
        ════════════════════════════════════════════════════════════════════════ -->
   <section id="hero">
     <div class="hero-nebula"></div>
     <div class="container">
       <div class="hero-content fade-in">
 
-        <!-- Badge de disponibilidad con punto pulsante -->
         <div class="hero-badge">
           <span class="dot"></span>
           <span data-i18n="hero.badge">Disponible para nuevas oportunidades</span>
         </div>
 
-        <!-- Nombre completo -->
         <h1 class="hero-titulo">
           Martina <span class="texto-gradiente">Virgilli</span>
         </h1>
 
-        <!-- Rol profesional en monospace -->
         <p class="hero-rol" data-i18n="hero.rol">
           Software Developer · Automatizaciones · Python · SQL
         </p>
 
-        <!-- Descripción breve -->
         <p class="hero-descripcion" data-i18n="hero.descripcion">
           Desarrolladora de software especializada en automatizaciones, Python e inteligencia
           artificial. Con experiencia en SQL, análisis de datos y desarrollo full stack.
           Preferencia sobre trabajo remoto o híbrido.
         </p>
 
-        <!-- ✏️ LINKS SOCIALES — editar las URLs acá directamente -->
         <div class="hero-botones">
 
-          <!-- LinkedIn → cambiar el href si cambia tu URL de LinkedIn -->
           <a href="https://www.linkedin.com/in/martina-virgilli-a80b95211"
              target="_blank" rel="noopener" class="btn-primario">
-            <!-- Ícono LinkedIn -->
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
               <rect x="2" y="9" width="4" height="12"/>
@@ -1167,16 +1138,13 @@
             LinkedIn
           </a>
 
-          <!-- GitHub → cambiar el href si cambia tu usuario de GitHub -->
           <a href="https://github.com/martinavirgilli" target="_blank" rel="noopener" class="btn-secundario">
-            <!-- Ícono GitHub -->
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
             </svg>
             GitHub
           </a>
 
-          <!-- Email — abre Gmail en nueva pestaña con el destinatario precargado -->
           <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=martinavirgilli@gmail.com"
              target="_blank" rel="noopener" class="btn-secundario">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1187,7 +1155,6 @@
           </a>
         </div>
 
-        <!-- Stats numéricos -->
         <div class="hero-stats">
           <div class="stat-item">
             <div class="stat-numero">2</div>
@@ -1214,12 +1181,10 @@
 
   <!-- ════════════════════════════════════════════════════════════════════════
        SOBRE MÍ
-       Estructura: encabezado → grid (bio | tarjeta) → grilla "Lo que busco"
        ════════════════════════════════════════════════════════════════════════ -->
   <section id="about">
     <div class="container">
 
-      <!-- Encabezado de sección -->
       <div class="seccion-header fade-in">
         <span class="tag" data-i18n="about.tag">Sobre mí</span>
         <h2 class="seccion-titulo" data-i18n="about.titulo">
@@ -1227,15 +1192,13 @@
         </h2>
       </div>
 
-      <!-- Grid 2 columnas: bio a la izquierda, tarjeta de perfil a la derecha -->
       <div class="about-grid">
 
-        <!-- Texto biográfico (breve y directo para reclutadores) -->
         <div class="about-texto fade-in">
           <h3 data-i18n="about.subtitulo">Hola, soy Martina</h3>
           <p data-i18n="about.p1">
             Desarrolladora de software con experiencia en SQL, análisis de datos y desarrollo
-            full stack. Finalicé mi Tecnicatura en Desarrollo de Software y mi Diplomatura en 
+            full stack. Finalicé mi Tecnicatura en Desarrollo de Software y mi Diplomatura en
             Desarrollo Web Full Stack en UADE en 2025, y actualmente trabajo en TELPIN.
           </p>
           <p data-i18n="about.p2">
@@ -1245,10 +1208,8 @@
           </p>
         </div>
 
-        <!-- Tarjeta de perfil con datos clave -->
         <div class="about-card fade-in">
           <div class="about-card-header">
-            <!-- Avatar con iniciales — reemplazar por <img> si se quiere agregar foto -->
             <div class="about-avatar">MV</div>
             <div class="about-card-info">
               <h4>Martina Virgilli</h4>
@@ -1257,7 +1218,6 @@
           </div>
 
           <ul class="about-detalles">
-            <!-- Ubicación -->
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -1265,7 +1225,6 @@
               </svg>
               <span data-i18n="about.ubicacion">Pinamar, Buenos Aires, Argentina</span>
             </li>
-            <!-- Idiomas -->
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
@@ -1274,21 +1233,18 @@
               </svg>
               <span data-i18n="about.idiomas">Español (nativo) · Inglés B2</span>
             </li>
-            <!-- Foco técnico -->
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
               </svg>
               <span data-i18n="about.foco">Python · SQL · Automatizaciones · IA</span>
             </li>
-            <!-- Modalidad -->
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
               </svg>
               <span data-i18n="about.disponibilidad">Remoto · Full-time · Part-time</span>
             </li>
-            <!-- LinkedIn -->
             <li>
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -1302,12 +1258,10 @@
             </li>
           </ul>
         </div>
-      </div><!-- /about-grid -->
+      </div>
 
-      <!-- Grilla de 3 tarjetas "Lo que busco" — fuera del grid para alinearse con todo el ancho -->
       <div class="busco-grid fade-in">
 
-        <!-- Tarjeta 1: Automatizaciones -->
         <div class="busco-item">
           <div class="busco-icono">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1320,7 +1274,6 @@
           </div>
         </div>
 
-        <!-- Tarjeta 2: Python & IA -->
         <div class="busco-item">
           <div class="busco-icono">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1335,7 +1288,6 @@
           </div>
         </div>
 
-        <!-- Tarjeta 3: Trabajo remoto -->
         <div class="busco-item">
           <div class="busco-icono">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1348,7 +1300,7 @@
           </div>
         </div>
 
-      </div><!-- /busco-grid -->
+      </div>
 
     </div>
   </section>
@@ -1356,8 +1308,6 @@
 
   <!-- ════════════════════════════════════════════════════════════════════════
        TECH STACK
-       Las tarjetas crecen con su contenido (.stack-categoria flex: 0 0 auto)
-       La tarjeta de especialización es más ancha (.stack-categoria.destacado)
        ════════════════════════════════════════════════════════════════════════ -->
   <section id="stack">
     <div class="container">
@@ -1371,22 +1321,16 @@
 
       <div class="stack-grid fade-in">
 
-        <!-- ✏️ STACK TÉCNICO — los chips (pills) y las barras se editan acá directamente en el HTML.
-             Los textos de los títulos de categoría (ej: "Especialización en curso") se editan
-             en el diccionario de traducciones más abajo, buscando las claves stack.*
-             Las barras de nivel: cambiá el número en data-width (0 = 0%, 100 = 100%) -->
 
-        <!-- ── Tarjeta ESPECIALIZACIÓN (destacada, ancho completo) ─────────── -->
+        <!-- Tarjeta: ESPECIALIZACIÓN -->
         <div class="stack-categoria destacado">
           <div class="stack-categoria-titulo">
-            <!-- Ícono rayo -->
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
             </svg>
             <span data-i18n="stack.cat.auto">Especialización en curso</span>
           </div>
 
-          <!-- Chips de tecnologías en foco -->
           <div class="stack-items">
             <span class="stack-item-highlight">Python</span>
             <span class="stack-item-highlight">Automatizaciones</span>
@@ -1398,7 +1342,6 @@
 
           <p class="stack-nota" data-i18n="stack.nota.auto">↑ Foco principal de aprendizaje activo</p>
 
-          <!-- Barras de nivel — data-width define el porcentaje (0-100) -->
           <div class="skill-bar-wrap" id="skillBars">
             <div class="skill-bar-item">
               <div class="skill-bar-label">
@@ -1437,9 +1380,9 @@
               </div>
             </div>
           </div>
-        </div><!-- /destacado -->
+        </div>
 
-        <!-- ── Tarjeta LENGUAJES ──────────────────────────────────────────── -->
+        <!-- Tarjeta: LENGUAJES -->
         <div class="stack-categoria">
           <div class="stack-categoria-titulo">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1456,7 +1399,7 @@
           </div>
         </div>
 
-        <!-- ── Tarjeta BACKEND ────────────────────────────────────────────── -->
+        <!-- Tarjeta: BACKEND -->
         <div class="stack-categoria">
           <div class="stack-categoria-titulo">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1473,7 +1416,7 @@
           </div>
         </div>
 
-        <!-- ── Tarjeta BASES DE DATOS ─────────────────────────────────────── -->
+        <!-- Tarjeta: BASES DE DATOS -->
         <div class="stack-categoria">
           <div class="stack-categoria-titulo">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1491,7 +1434,7 @@
           </div>
         </div>
 
-        <!-- ── Tarjeta HERRAMIENTAS ───────────────────────────────────────── -->
+        <!-- Tarjeta: HERRAMIENTAS -->
         <div class="stack-categoria">
           <div class="stack-categoria-titulo">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1507,15 +1450,13 @@
           </div>
         </div>
 
-      </div><!-- /stack-grid -->
+      </div>
     </div>
   </section>
 
 
   <!-- ════════════════════════════════════════════════════════════════════════
        PROYECTOS
-       Las cards se generan dinámicamente (ver JS: cargarProyectos / renderizarProyectos)
-       Para agregar proyectos: editar portfolio-projects.json
        ════════════════════════════════════════════════════════════════════════ -->
   <section id="proyectos">
     <div class="container">
@@ -1530,7 +1471,6 @@
         </p>
       </div>
 
-      <!-- Botones de filtro — data-categoria debe coincidir con el campo "categoria" del JSON -->
       <div class="proyectos-filtros fade-in">
         <button class="filtro-btn activo" data-categoria="todos"
                 onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.todos">Todos</button>
@@ -1542,7 +1482,6 @@
                 onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.bot">Bot</button>
       </div>
 
-      <!-- Las cards se inyectan aquí por JavaScript -->
       <div class="proyectos-grid" id="proyectosGrid"></div>
 
     </div>
@@ -1551,8 +1490,6 @@
 
   <!-- ════════════════════════════════════════════════════════════════════════
        EXPERIENCIA PROFESIONAL
-       Para agregar una entrada: duplicar un .timeline-item y editar su contenido
-       El trabajo actual tiene .timeline-dot.activo (punto verde pulsante)
        ════════════════════════════════════════════════════════════════════════ -->
   <section id="experiencia">
     <div class="container">
@@ -1566,9 +1503,8 @@
 
       <div class="timeline fade-in">
 
-        <!-- ── Entrada 1: TELPIN (trabajo actual) ─────────────────────────── -->
         <div class="timeline-item">
-          <div class="timeline-dot activo"></div>  <!-- punto verde = trabajo actual -->
+          <div class="timeline-dot activo"></div>
           <div class="timeline-card">
             <div class="timeline-header">
               <span class="timeline-rol" data-i18n="exp.1.rol">
@@ -1594,7 +1530,6 @@
           </div>
         </div>
 
-        <!-- ── Entrada 2: Proyecto final universitario ────────────────────── -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
@@ -1602,7 +1537,7 @@
               <span class="timeline-rol" data-i18n="exp.2.rol">
                 Proyecto Final — Desarrolladora Full Stack
               </span>
-              <span class="timeline-periodo" data-i18n="exp.2.periodo">2025</span>
+              <span class="timeline-periodo" data-i18n="exp.2.periodo">2025 — 2026</span>
             </div>
             <div class="timeline-empresa" data-i18n="exp.2.empresa">
               Universidad Argentina de la Empresa (UADE)
@@ -1611,28 +1546,38 @@
               Sistema de gestión de refugio de animales como proyecto final de diplomatura.
               Backend en Java con Spring Boot, REST APIs y autenticación JWT. Frontend con
               HTML, CSS y JavaScript. Base de datos MySQL, testing con Postman y control
-              de versiones con Git.
+              de versiones con Git. Más tarde lo reescribí de cero en una v2 — Refugio del
+              Mar — con React 19, Vite y Tailwind sobre una API en Django REST con JWT y
+              PostgreSQL, desplegada en Netlify y Render. La v2 suma el catálogo público sin
+              registro, la ficha con galería de fotos, un panel de gestión para el refugio con
+              editor de fichas, agenda de visitas, archivo de adoptados y reseñas de las
+              familias, permisos validados siempre en el backend con 44 tests que lo fijan, y
+              accesibilidad AA verificada.
             </p>
             <div class="timeline-tags">
               <span class="tag">Java</span>
               <span class="tag">Spring Boot</span>
+              <span class="tag">React</span>
+              <span class="tag">Vite</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">Django REST</span>
               <span class="tag">REST APIs</span>
               <span class="tag">JWT</span>
+              <span class="tag">PostgreSQL</span>
               <span class="tag">MySQL</span>
-              <span class="tag">HTML / CSS / JS</span>
+              <span class="tag">Testing</span>
               <span class="tag">Git</span>
             </div>
           </div>
         </div>
 
-      </div><!-- /timeline -->
+      </div>
     </div>
   </section>
 
 
   <!-- ════════════════════════════════════════════════════════════════════════
        EDUCACIÓN Y CERTIFICACIONES
-       Para agregar una entrada: duplicar un .educacion-card y editar su contenido
        ════════════════════════════════════════════════════════════════════════ -->
   <section id="educacion">
     <div class="container">
@@ -1646,8 +1591,6 @@
 
       <div class="educacion-grid fade-in">
 
-        <!-- Ícono reutilizable: universidad -->
-        <!-- Tecnicatura UADE -->
         <div class="educacion-card">
           <div class="educacion-icono">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1665,7 +1608,6 @@
           </div>
         </div>
 
-        <!-- Diplomatura Full Stack UADE -->
         <div class="educacion-card">
           <div class="educacion-icono">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1683,7 +1625,6 @@
           </div>
         </div>
 
-        <!-- Intercambio España -->
         <div class="educacion-card">
           <div class="educacion-icono">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1702,10 +1643,8 @@
           </div>
         </div>
 
-        <!-- CCNA Cisco -->
         <div class="educacion-card">
           <div class="educacion-icono">
-            <!-- Ícono certificado/medalla -->
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="8" r="6"/>
               <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
@@ -1721,7 +1660,6 @@
           </div>
         </div>
 
-        <!-- Python Udemy -->
         <div class="educacion-card">
           <div class="educacion-icono">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1739,7 +1677,6 @@
           </div>
         </div>
 
-        <!-- Bachiller -->
         <div class="educacion-card">
           <div class="educacion-icono">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1757,7 +1694,7 @@
           </div>
         </div>
 
-      </div><!-- /educacion-grid -->
+      </div>
     </div>
   </section>
 
@@ -1780,7 +1717,6 @@
         </p>
 
         <div class="contacto-cards">
-          <!-- Email — abre Gmail en nueva pestaña con el destinatario precargado -->
           <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=martinavirgilli@gmail.com"
              target="_blank" rel="noopener" class="contacto-card">
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1789,7 +1725,6 @@
             </svg>
             <span>Email</span>
           </a>
-          <!-- LinkedIn -->
           <a href="https://www.linkedin.com/in/martina-virgilli-a80b95211"
              target="_blank" rel="noopener" class="contacto-card">
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
@@ -1799,7 +1734,6 @@
             </svg>
             <span>LinkedIn</span>
           </a>
-          <!-- GitHub -->
           <a href="https://github.com/martinavirgilli" target="_blank" rel="noopener" class="contacto-card">
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
@@ -1828,27 +1762,6 @@
        ════════════════════════════════════════════════════════════════════════ -->
   <script>
 
-    /* ══════════════════════════════════════════════════════════════════════
-       ✏️  EDITAR TEXTOS DEL PORTFOLIO — LEER PRIMERO
-       ══════════════════════════════════════════════════════════════════════
-
-       CASI TODO el texto visible de la página está acá abajo, en el objeto
-       `traducciones`. Tiene dos bloques: `es` (español) y `en` (inglés).
-
-       Para cambiar cualquier texto:
-         1. Buscá la clave que describe lo que querés cambiar
-            (ej: 'hero.descripcion', 'about.p1', 'exp.1.desc', etc.)
-         2. Editá el valor entre comillas en `es:` y/o `en:`
-         3. Guardá — el cambio se aplica solo en ambos idiomas
-
-       Las claves tienen que existir en los DOS bloques (es y en).
-
-       LO QUE NO está acá y hay que editar en el HTML directamente:
-         → Links de LinkedIn, GitHub, Email  →  buscar "#hero" y "#contacto"
-         → Chips del stack técnico (las pills de tecnologías)  →  buscar "#stack"
-         → Porcentajes de las barras de nivel  →  buscar "data-width"
-         → Proyectos  →  editar portfolio-projects.json (no este archivo)
-       ══════════════════════════════════════════════════════════════════════ */
     const traducciones = {
 
       /* ────────────────────────────────────────────────────────────────────
@@ -1925,9 +1838,9 @@
         'exp.1.empresa': 'Cooperativa Telefónica de Pinamar Ltda. (TELPIN)',
         'exp.1.desc':    'Desarrollo, optimización y mantenimiento de consultas SQL para sistemas internos. Análisis de datos, generación de reportes y soporte operativo para distintas áreas, contribuyendo a la optimización de procesos y la gestión eficiente de bases de datos.',
         'exp.2.rol':     'Proyecto Final — Desarrolladora Full Stack',
-        'exp.2.periodo': '2025',
+        'exp.2.periodo': '2025 — 2026',
         'exp.2.empresa': 'Universidad Argentina de la Empresa (UADE)',
-        'exp.2.desc':    'Sistema de gestión de refugio de animales como proyecto final de diplomatura. Backend en Java con Spring Boot, REST APIs y autenticación JWT. Frontend con HTML, CSS y JavaScript. Base de datos MySQL, testing con Postman y control de versiones con Git.',
+        'exp.2.desc':    'Sistema de gestión de refugio de animales como proyecto final de diplomatura. Backend en Java con Spring Boot, REST APIs y autenticación JWT. Frontend con HTML, CSS y JavaScript. Base de datos MySQL, testing con Postman y control de versiones con Git. Más tarde lo reescribí de cero en una v2 — Refugio del Mar — con React 19, Vite y Tailwind sobre una API en Django REST con JWT y PostgreSQL, desplegada en Netlify y Render. La v2 suma el catálogo público sin registro, la ficha con galería de fotos, un panel de gestión para el refugio con editor de fichas, agenda de visitas, archivo de adoptados y reseñas de las familias, permisos validados siempre en el backend con 44 tests que lo fijan, y accesibilidad AA verificada.',
 
         /* Educación */
         'edu.tag':    'Educación',
@@ -2036,9 +1949,9 @@
         'exp.1.empresa': 'Cooperativa Telefónica de Pinamar Ltda. (TELPIN)',
         'exp.1.desc':    'Development, optimization and maintenance of SQL queries for internal systems. Data analysis, report generation and operational support for multiple departments, contributing to process optimization and efficient data management.',
         'exp.2.rol':     'University Final Project — Full Stack Developer',
-        'exp.2.periodo': '2025',
+        'exp.2.periodo': '2025 — 2026',
         'exp.2.empresa': 'Universidad Argentina de la Empresa (UADE)',
-        'exp.2.desc':    'Animal shelter management system as a university final project. Backend in Java with Spring Boot, REST APIs and JWT authentication. Frontend with HTML, CSS and JavaScript. MySQL database, API testing with Postman and version control with Git.',
+        'exp.2.desc':    'Animal shelter management system as a university final project. Backend in Java with Spring Boot, REST APIs and JWT authentication. Frontend with HTML, CSS and JavaScript. MySQL database, API testing with Postman and version control with Git. I later rewrote it from scratch as a v2 — Refugio del Mar — with React 19, Vite and Tailwind on a Django REST API with JWT and PostgreSQL, deployed on Netlify and Render. The v2 adds a public catalogue with no sign-up, animal profiles with a photo gallery, a management panel for the shelter with a profile editor, visit scheduling, an archive of adopted animals and reviews from the families, permissions always enforced in the backend with 44 tests pinning them down, and verified AA accessibility.',
 
         /* Education */
         'edu.tag':    'Education',
@@ -2088,10 +2001,6 @@
        Cambia el idioma de toda la página actualizando los elementos
        que tienen el atributo [data-i18n] con la clave correspondiente.
 
-       CÓMO AGREGAR UN NUEVO ELEMENTO TRADUCIBLE:
-       1. En el HTML: <elemento data-i18n="clave">texto por defecto</elemento>
-       2. En traducciones.es: agregar 'clave': 'texto en español'
-       3. En traducciones.en: agregar 'clave': 'text in English'
        ══════════════════════════════════════════════════════════════════════ */
     function setLang(lang) {
       idiomaActual = lang;
@@ -2258,26 +2167,34 @@
     /* ══════════════════════════════════════════════════════════════════════
        FUNCIÓN: cargarProyectos()
        Intenta cargar los proyectos desde portfolio-projects.json.
-       Si falla (archivo abierto localmente sin servidor), usa el proyecto
-       real del CV como ejemplo de fallback para que la sección no quede vacía.
-
-       PARA AGREGAR PROYECTOS REALES:
-       Editar portfolio-projects.json siguiendo el formato existente.
+       Si falla (archivo abierto localmente sin servidor), usa un proyecto
+       de fallback para que la sección no quede vacía.
        ══════════════════════════════════════════════════════════════════════ */
     async function cargarProyectos() {
 
-      /* Proyecto de fallback — el proyecto final universitario real */
+      /* Proyecto de fallback — el proyecto real, por si el JSON no carga */
       const fallback = [
         {
-          id: 'refugio-animales',
-          titulo: 'Sistema de Gestión — Refugio de Animales',
-          descripcion: 'Sistema full stack universitario. Backend con Java y Spring Boot, REST APIs y autenticación JWT. Base de datos MySQL. Frontend con HTML, CSS y JavaScript. Testing con Postman.',
+          id: 'refugio-del-mar',
+          titulo: 'Refugio del Mar',
+          descripcion: 'Aplicación full stack para un refugio de animales: el catálogo público donde alguien pide conocer a un animal, y el panel interno donde el equipo gestiona fichas, visitas, adopciones y voluntarios. React 19 con Vite y Tailwind, backend en Django REST con JWT y PostgreSQL.',
           tipo: 'Full Stack',
           categoria: 'web',
-          tags: ['Java', 'Spring Boot', 'REST API', 'JWT', 'MySQL', 'HTML/CSS/JS', 'Postman', 'Git'],
-          github_url: '',
-          preview_url: '',
-          imagen: ''
+          tags: ['React', 'Vite', 'Tailwind CSS', 'Django', 'Django REST Framework', 'JWT', 'PostgreSQL'],
+          github_url: 'https://github.com/martinavirgilli/RefugioDelMar',
+          preview_url: 'https://refugio-del-mar.netlify.app',
+          imagen: 'assets/portfolio/refugio-del-mar.jpg'
+        },
+        {
+          id: 'carpe-diem-pinamar',
+          titulo: 'Carpe Diem — Alquileres Pinamar',
+          descripcion: 'Sitio promocional de alquileres temporarios: cuatro departamentos con ficha propia, galería, mapa de ubicación aproximada y calendario de disponibilidad sincronizado por iCal con Google Calendar, Airbnb y Booking. La consulta abre WhatsApp con las fechas elegidas ya escritas. Sin frameworks ni compilación, con una función serverless para el calendario.',
+          tipo: 'Web',
+          categoria: 'web',
+          tags: ['HTML / CSS / JS', 'Leaflet', 'iCal', 'Netlify Functions', 'PHP', 'Node', 'Python'],
+          github_url: 'https://github.com/martinavirgilli/carpe-diem-pinamar',
+          preview_url: 'https://carpediem-pinamar.netlify.app',
+          imagen: 'assets/portfolio/carpe-diem-pinamar.png'
         }
       ];
 
@@ -2299,9 +2216,6 @@
        FUNCIÓN: animarBarras()
        Anima las barras de nivel del stack cuando la sección entra en pantalla.
        Usa IntersectionObserver para disparar la animación solo una vez.
-
-       PARA CAMBIAR LOS NIVELES: editar el atributo data-width (0-100) en
-       cada .skill-bar-fill dentro del HTML (sección #stack).
        ══════════════════════════════════════════════════════════════════════ */
     function animarBarras() {
       const fills = document.querySelectorAll('.skill-bar-fill');
@@ -2334,15 +2248,6 @@
       setLang('es');       /* idioma inicial: español    */
       animarBarras();      /* preparar animación de barras */
     });
-
-    /* ══════════════════════════════════════════════════════════════════════
-       FUNCIÓN: animarBarras()
-       Anima las barras de nivel del stack cuando la sección entra en pantalla.
-       Usa IntersectionObserver para disparar la animación solo una vez.
-
-       PARA CAMBIAR LOS NIVELES: editar el atributo data-width (0-100) en
-       cada .skill-bar-fill dentro del HTML (sección #stack).
-       ══════════════════════════════════════════════════════════════════════ */
 
   </script>
 </body>
