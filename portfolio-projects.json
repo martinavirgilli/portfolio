@@ -20,7 +20,7 @@
       "categoria": "web",
       "tags": ["HTML / CSS / JS", "Leaflet", "iCal", "Netlify Functions", "PHP", "Node", "Python"],
       "github_url": "https://github.com/martinavirgilli/carpe-diem-pinamar",
-      "preview_url": "https://carpediem-pinamar.netlify.app",
+      "preview_url": "https://carpediempinamar.netlify.app",
       "imagen": "assets/portfolio/carpe-diem-pinamar.png",
       "destacado": true
     }
