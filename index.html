@@ -18,18 +18,20 @@
        PALETA DE COLORES
        ══════════════════════════════════════════════════════════════════════ */
     :root {
-      --fondo-principal:  #0E1225;   /* Cosmic Dark    — fondo base de toda la página */
-      --fondo-secundario: #161B35;   /* Cosmic Mid     — secciones alternas           */
-      --fondo-card:       #1E2445;   /* Cosmic Card    — tarjetas                     */
-      --acento-violeta:   #3A46BE;   /* Cosmic Blue    — color de acento principal    */
-      --acento-lavanda:   #866F96;   /* Ceil           — hover y detalles             */
-      --acento-lila:      #D0CBE8;   /* Lavanda claro  — texto destacado / etiquetas  */
-      --verde:            #10B981;   /* Verde esmeralda — "activo / disponible"       */
-      --blanco:           #EDF0F7;   /* Blanco frío    — texto principal              */
-      --gris:             #8892B4;   /* Azul-gris      — texto secundario             */
-      --borde:            rgba(58, 70, 190, 0.25);
-      --gradiente:        linear-gradient(135deg, #3A46BE, #866F96, #DD8C6F);
-      --gradiente-texto:  linear-gradient(135deg, #D0CBE8, #866F96, #DD8C6F);
+      --fondo-principal:  #1F1416;   /* Plum profundo  — fondo base de toda la página */
+      --fondo-secundario: #2A1A1E;   /* Plum medio     — secciones alternas           */
+      --fondo-card:       #352226;   /* Plum tarjeta   — tarjetas                     */
+      --acento-cobre:     #A86A65;   /* Copper Rose    — color de acento principal    */
+      --acento-rosa:      #AB8882;   /* Dusty Rose     — hover y detalles             */
+      --acento-claro:     #D8A694;   /* Rosewater      — texto destacado / etiquetas  */
+      --dorado:           #E0CB89;   /* China Doll     — "activo / disponible"        */
+      --plum:             #754B4D;   /* Plum Wine      — estados activos              */
+      --plum-velo:        rgba(117, 75, 77, 0.28);  /* Plum Wine al 28% — secciones alternas */
+      --blanco:           #E8DCD4;   /* Crema cálido   — texto principal              */
+      --gris:             #BE9A93;   /* Rosa apagado   — texto secundario             */
+      --borde:            rgba(168, 106, 101, 0.25);
+      --gradiente:        linear-gradient(135deg, #5E3C3E, #72474A, #8A5450);
+      --gradiente-texto:  linear-gradient(135deg, #D8A694, #AB8882, #E0CB89);
     }
 
     /* ══════════════════════════════════════════════════════════════════════
@@ -53,18 +55,18 @@
       position: fixed;
       inset: 0;                        /* top/right/bottom/left: 0 */
       background-image:
-        radial-gradient(1px 1px at  8%  18%, rgba(201,224,235,0.35) 0%, transparent 100%),
-        radial-gradient(1px 1px at 22%  72%, rgba(201,224,235,0.20) 0%, transparent 100%),
-        radial-gradient(1px 1px at 37%  11%, rgba(201,224,235,0.40) 0%, transparent 100%),
-        radial-gradient(1px 1px at 53%  58%, rgba(201,224,235,0.15) 0%, transparent 100%),
-        radial-gradient(1px 1px at 68%  84%, rgba(201,224,235,0.28) 0%, transparent 100%),
-        radial-gradient(1px 1px at 82%  27%, rgba(201,224,235,0.30) 0%, transparent 100%),
-        radial-gradient(1px 1px at 91%  63%, rgba(201,224,235,0.14) 0%, transparent 100%),
-        radial-gradient(1px 1px at 14%  44%, rgba(201,224,235,0.22) 0%, transparent 100%),
-        radial-gradient(2px 2px at 29%  33%, rgba(131, 80,196,0.45) 0%, transparent 100%),
-        radial-gradient(2px 2px at 76%  52%, rgba(115,146,181,0.35) 0%, transparent 100%),
-        radial-gradient(2px 2px at 47%  89%, rgba(131, 80,196,0.28) 0%, transparent 100%),
-        radial-gradient(2px 2px at 63%  15%, rgba(115,146,181,0.25) 0%, transparent 100%);
+        radial-gradient(1px 1px at  8%  18%, rgba(232,220,212,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22%  72%, rgba(232,220,212,0.20) 0%, transparent 100%),
+        radial-gradient(1px 1px at 37%  11%, rgba(232,220,212,0.40) 0%, transparent 100%),
+        radial-gradient(1px 1px at 53%  58%, rgba(232,220,212,0.15) 0%, transparent 100%),
+        radial-gradient(1px 1px at 68%  84%, rgba(232,220,212,0.28) 0%, transparent 100%),
+        radial-gradient(1px 1px at 82%  27%, rgba(232,220,212,0.30) 0%, transparent 100%),
+        radial-gradient(1px 1px at 91%  63%, rgba(232,220,212,0.14) 0%, transparent 100%),
+        radial-gradient(1px 1px at 14%  44%, rgba(232,220,212,0.22) 0%, transparent 100%),
+        radial-gradient(2px 2px at 29%  33%, rgba(168,106,101,0.45) 0%, transparent 100%),
+        radial-gradient(2px 2px at 76%  52%, rgba(216,166,148,0.35) 0%, transparent 100%),
+        radial-gradient(2px 2px at 47%  89%, rgba(168,106,101,0.28) 0%, transparent 100%),
+        radial-gradient(2px 2px at 63%  15%, rgba(216,166,148,0.25) 0%, transparent 100%);
       pointer-events: none;
       z-index: 0;
     }
@@ -100,9 +102,9 @@
       display: inline-block;
       padding: 4px 12px;
       border-radius: 20px;
-      background: rgba(131, 80, 196, 0.12);
-      border: 1px solid rgba(131, 80, 196, 0.28);
-      color: var(--acento-lila);
+      background: rgba(168,106,101,0.12);
+      border: 1px solid rgba(168,106,101,0.28);
+      color: var(--acento-claro);
       font-size: 0.75rem;
       font-weight: 500;
       white-space: nowrap;
@@ -113,9 +115,9 @@
       display: inline-block;
       padding: 4px 12px;
       border-radius: 20px;
-      background: rgba(16, 185, 129, 0.10);
-      border: 1px solid rgba(16, 185, 129, 0.28);
-      color: #34D399;
+      background: rgba(224,203,137,0.10);
+      border: 1px solid rgba(224,203,137,0.28);
+      color: #E0CB89;
       font-size: 0.75rem;
       font-weight: 500;
     }
@@ -124,7 +126,7 @@
     .mono {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.85em;
-      color: var(--acento-lila);
+      color: var(--acento-claro);
     }
 
     /* ── Animación de entrada al hacer scroll ───────────────────────────── */
@@ -173,7 +175,7 @@
       transition: border-color 0.2s, transform 0.2s;
       background: transparent;
     }
-    .btn-secundario:hover { border-color: var(--acento-violeta); transform: translateY(-2px); }
+    .btn-secundario:hover { border-color: var(--acento-cobre); transform: translateY(-2px); }
 
     /* ══════════════════════════════════════════════════════════════════════
        NAVEGACIÓN FIJA
@@ -183,7 +185,7 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 14px 0;
-      background: rgba(38, 36, 35, 0.90);  /* --fondo-principal con 90% opacidad */
+      background: rgba(31,20,22,0.90);  /* --fondo-principal con 90% opacidad */
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--borde);
     }
@@ -200,7 +202,7 @@
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.4rem;
       font-weight: 700;
-      background: var(--gradiente);
+      background: var(--gradiente-texto);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -237,7 +239,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      background: rgba(131,80,196,0.08);
+      background: rgba(168,106,101,0.08);
       border: 1px solid var(--borde);
       border-radius: 8px;
       padding: 4px;
@@ -255,7 +257,7 @@
       font-family: 'Inter', sans-serif;
     }
     .lang-btn.activo {
-      background: var(--acento-violeta);
+      background: var(--plum);
       color: var(--blanco);
     }
 
@@ -318,7 +320,7 @@
       transform: translate(-50%, -50%);
       /* min() evita que la nebulosa supere el ancho del viewport en móvil */
       width: min(600px, 100vw); height: min(600px, 100vw);
-      background: radial-gradient(ellipse, rgba(58,70,190,0.10) 0%, rgba(221,140,111,0.04) 55%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(168,106,101,0.10) 0%, rgba(216,166,148,0.04) 55%, transparent 70%);
       pointer-events: none;
     }
 
@@ -335,9 +337,9 @@
       gap: 8px;
       padding: 6px 16px;
       border-radius: 20px;
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.22);
-      color: #34D399;
+      background: rgba(224,203,137,0.08);
+      border: 1px solid rgba(224,203,137,0.22);
+      color: #E0CB89;
       font-size: 0.82rem;
       margin-bottom: 24px;
     }
@@ -345,7 +347,7 @@
     .hero-badge .dot {
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: #22C55E;
+      background: #E0CB89;
       animation: pulso 2s infinite;
     }
     @keyframes pulso {
@@ -365,7 +367,7 @@
     .hero-rol {
       font-family: 'JetBrains Mono', monospace;
       font-size: clamp(0.78rem, 1.8vw, 0.96rem);
-      color: var(--acento-lila);
+      color: var(--acento-claro);
       margin-bottom: 20px;
       letter-spacing: 0.02em;
     }
@@ -492,7 +494,7 @@
     .about-card-info p {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-      color: var(--acento-lila);
+      color: var(--acento-claro);
     }
 
     /* Lista de detalles: ubicación, idiomas, foco, etc. */
@@ -504,9 +506,9 @@
       font-size: 0.86rem;
       color: var(--gris);
     }
-    .about-detalles li svg { color: var(--acento-lavanda); flex-shrink: 0; }
+    .about-detalles li svg { color: var(--acento-rosa); flex-shrink: 0; }
     .about-detalles a {
-      color: var(--acento-lila);
+      color: var(--acento-claro);
       text-decoration: none;
       font-size: 0.86rem;
     }
@@ -528,16 +530,16 @@
       gap: 12px;
       transition: border-color 0.25s;
     }
-    .busco-item:hover { border-color: rgba(131,80,196,0.48); }
+    .busco-item:hover { border-color: rgba(168,106,101,0.48); }
     .busco-icono {
       width: 34px; height: 34px;
       border-radius: 9px;
-      background: rgba(131,80,196,0.12);
-      border: 1px solid rgba(131,80,196,0.2);
+      background: rgba(168,106,101,0.12);
+      border: 1px solid rgba(168,106,101,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--acento-lavanda);
+      color: var(--acento-rosa);
       flex-shrink: 0;
     }
     .busco-texto strong { display: block; font-size: 0.86rem; font-weight: 700; margin-bottom: 3px; }
@@ -547,7 +549,7 @@
        SECCIÓN TECH STACK
        Las tarjetas son adaptativas: crecen con su contenido, no llenan el grid
        ══════════════════════════════════════════════════════════════════════ */
-    #stack { padding: 96px 0; background: rgba(64,43,71,0.28); }
+    #stack { padding: 96px 0; background: var(--plum-velo); }
 
     /* Grid principal: destacado arriba full-width, resto en 2 columnas debajo */
     .stack-grid {
@@ -565,20 +567,20 @@
       padding: 24px 26px;
       transition: border-color 0.3s;
     }
-    .stack-categoria:hover { border-color: rgba(131,80,196,0.45); }
+    .stack-categoria:hover { border-color: rgba(168,106,101,0.45); }
 
     /* Tarjeta de especialización — fila entera (ambas columnas) */
     .stack-categoria.destacado {
       grid-column: 1 / -1;             /* se extiende de columna 1 a la última */
-      border-color: rgba(201,224,235,0.30);
-      background: rgba(131,80,196,0.08);
+      border-color: rgba(232,220,212,0.30);
+      background: rgba(168,106,101,0.08);
     }
 
     /* Título de cada categoría */
     .stack-categoria-titulo {
       font-size: 0.75rem;
       font-weight: 600;
-      color: var(--acento-lila);
+      color: var(--acento-claro);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 14px;
@@ -587,7 +589,7 @@
       gap: 7px;
     }
     /* Título especial para la tarjeta de especialización */
-    .stack-categoria.destacado .stack-categoria-titulo { color: #C9E0EB; }
+    .stack-categoria.destacado .stack-categoria-titulo { color: #E8DCD4; }
 
     /* Contenedor de chips de tecnología */
     .stack-items { display: flex; flex-wrap: wrap; gap: 7px; }
@@ -596,23 +598,23 @@
     .stack-item {
       padding: 5px 12px;
       border-radius: 8px;
-      background: rgba(131,80,196,0.07);
-      border: 1px solid rgba(131,80,196,0.18);
+      background: rgba(168,106,101,0.07);
+      border: 1px solid rgba(168,106,101,0.18);
       color: var(--blanco);
       font-size: 0.8rem;
       font-weight: 500;
       white-space: nowrap;
       transition: background 0.2s, border-color 0.2s;
     }
-    .stack-item:hover { background: rgba(131,80,196,0.18); border-color: rgba(131,80,196,0.38); }
+    .stack-item:hover { background: rgba(168,106,101,0.18); border-color: rgba(168,106,101,0.38); }
 
     /* Chip destacado — para la tarjeta de especialización */
     .stack-item-highlight {
       padding: 5px 12px;
       border-radius: 8px;
-      background: rgba(131, 80, 196, 0.18);
-      border: 1px solid rgba(201, 224, 235, 0.30);
-      color: #C9E0EB;
+      background: rgba(168,106,101,0.18);
+      border: 1px solid rgba(232,220,212,0.30);
+      color: #E8DCD4;
       font-size: 0.8rem;
       font-weight: 600;
       white-space: nowrap;
@@ -634,17 +636,17 @@
       font-size: 0.75rem;
       color: var(--gris);
     }
-    .skill-bar-label span:last-child { color: var(--acento-lila); font-weight: 600; }
+    .skill-bar-label span:last-child { color: var(--acento-claro); font-weight: 600; }
     .skill-bar-track {
       height: 4px;
-      background: rgba(201,224,235,0.12);
+      background: rgba(232,220,212,0.12);
       border-radius: 10px;
       overflow: hidden;
     }
     .skill-bar-fill {
       height: 100%;
       border-radius: 10px;
-      background: linear-gradient(90deg, #8350C4, #7392B5);
+      background: linear-gradient(90deg, #A86A65, #D8A694);
       width: 0%;
       transition: width 1.2s ease;   /* animación de llenado */
     }
@@ -674,8 +676,8 @@
       transition: all 0.2s;
     }
     .filtro-btn:hover, .filtro-btn.activo {
-      background: var(--acento-violeta);
-      border-color: var(--acento-violeta);
+      background: var(--plum);
+      border-color: var(--acento-cobre);
       color: var(--blanco);
     }
 
@@ -696,14 +698,14 @@
       display: flex;
       flex-direction: column;
     }
-    .proyecto-card:hover { border-color: var(--acento-violeta); transform: translateY(-4px); }
+    .proyecto-card:hover { border-color: var(--acento-cobre); transform: translateY(-4px); }
 
     /* Imagen del proyecto — si no hay imagen se muestra el placeholder */
     .proyecto-img { width: 100%; height: 170px; object-fit: cover; display: block; }
     .proyecto-img-placeholder {
       width: 100%;
       height: 170px;
-      background: linear-gradient(135deg, rgba(131,80,196,0.15), rgba(115,146,181,0.10));
+      background: linear-gradient(135deg, rgba(168,106,101,0.15), rgba(216,166,148,0.10));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -712,7 +714,7 @@
     .proyecto-img-placeholder span {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.72rem;
-      color: var(--acento-lila);
+      color: var(--acento-claro);
       opacity: 0.7;
     }
 
@@ -721,7 +723,7 @@
     .proyecto-tipo {
       font-size: 0.7rem;
       font-weight: 600;
-      color: var(--acento-lila);
+      color: var(--acento-claro);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 8px;
@@ -742,18 +744,18 @@
       gap: 6px;
       padding: 8px 16px;
       border-radius: 8px;
-      border: 1px solid rgba(131, 80, 196, 0.5);
-      color: var(--acento-lila);
+      border: 1px solid rgba(168,106,101,0.5);
+      color: var(--acento-claro);
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 500;
-      background: rgba(131, 80, 196, 0.08);
+      background: rgba(168,106,101,0.08);
       transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
     .proyecto-link:hover {
       color: var(--blanco);
-      border-color: var(--acento-violeta);
-      background: rgba(131, 80, 196, 0.22);
+      border-color: var(--acento-cobre);
+      background: rgba(168,106,101,0.22);
     }
 
     /* Mensaje cuando no hay proyectos para el filtro activo */
@@ -768,7 +770,7 @@
     /* ══════════════════════════════════════════════════════════════════════
        SECCIÓN EXPERIENCIA — timeline vertical
        ══════════════════════════════════════════════════════════════════════ */
-    #experiencia { padding: 96px 0; background: rgba(64,43,71,0.28); }
+    #experiencia { padding: 96px 0; background: var(--plum-velo); }
 
     .timeline {
       position: relative;
@@ -784,7 +786,7 @@
       top: 8px;
       bottom: 0;
       width: 2px;
-      background: linear-gradient(to bottom, var(--acento-violeta), transparent);
+      background: linear-gradient(to bottom, var(--acento-cobre), transparent);
     }
 
     .timeline-item {
@@ -802,7 +804,7 @@
       width: 18px; height: 18px;
       border-radius: 50%;
       background: var(--fondo-principal);
-      border: 2px solid var(--acento-violeta);
+      border: 2px solid var(--acento-cobre);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -811,12 +813,12 @@
       content: '';
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: var(--acento-violeta);
+      background: var(--acento-cobre);
     }
 
     /* Punto verde pulsante para el trabajo ACTUAL */
-    .timeline-dot.activo { border-color: var(--verde); }
-    .timeline-dot.activo::after { background: var(--verde); animation: pulso 2s infinite; }
+    .timeline-dot.activo { border-color: var(--dorado); }
+    .timeline-dot.activo::after { background: var(--dorado); animation: pulso 2s infinite; }
 
     /* Tarjeta de experiencia */
     .timeline-card {
@@ -826,7 +828,7 @@
       padding: 26px;
       transition: border-color 0.3s;
     }
-    .timeline-card:hover { border-color: rgba(131,80,196,0.42); }
+    .timeline-card:hover { border-color: rgba(168,106,101,0.42); }
 
     .timeline-header {
       display: flex;
@@ -843,7 +845,7 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.73rem;
       color: var(--gris);
-      background: rgba(131,80,196,0.08);
+      background: rgba(168,106,101,0.08);
       border: 1px solid var(--borde);
       border-radius: 6px;
       padding: 3px 9px;
@@ -851,7 +853,7 @@
     }
 
     .timeline-empresa {
-      color: var(--acento-lila);
+      color: var(--acento-claro);
       font-size: 0.86rem;
       font-weight: 600;
       margin-bottom: 10px;
@@ -884,24 +886,24 @@
       display: flex;
       gap: 16px;
     }
-    .educacion-card:hover { border-color: rgba(131,80,196,0.42); transform: translateY(-3px); }
+    .educacion-card:hover { border-color: rgba(168,106,101,0.42); transform: translateY(-3px); }
 
     /* Ícono de institución */
     .educacion-icono {
       width: 44px; height: 44px;
       border-radius: 11px;
-      background: rgba(131,80,196,0.12);
-      border: 1px solid rgba(131,80,196,0.2);
+      background: rgba(168,106,101,0.12);
+      border: 1px solid rgba(168,106,101,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--acento-lavanda);
+      color: var(--acento-rosa);
       flex-shrink: 0;
     }
 
     .educacion-titulo    { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
     .educacion-institucion {
-      color: var(--acento-lila);
+      color: var(--acento-claro);
       font-size: 0.82rem;
       font-weight: 600;
       margin-bottom: 4px;
@@ -949,8 +951,8 @@
       min-width: 150px;
       justify-content: center;
     }
-    .contacto-card:hover { border-color: var(--acento-violeta); transform: translateY(-3px); }
-    .contacto-card svg { color: var(--acento-lavanda); }
+    .contacto-card:hover { border-color: var(--acento-cobre); transform: translateY(-3px); }
+    .contacto-card svg { color: var(--acento-rosa); }
 
     /* ══════════════════════════════════════════════════════════════════════
        FOOTER
@@ -962,7 +964,7 @@
       color: var(--gris);
       font-size: 0.8rem;
     }
-    footer span { color: var(--acento-lila); }
+    footer span { color: var(--acento-claro); }
 
     /* ══════════════════════════════════════════════════════════════════════
        DISEÑO RESPONSIVE
@@ -985,7 +987,7 @@
         flex-direction: column;
         position: absolute;
         top: 56px; left: 0; right: 0;
-        background: rgba(38,36,35,0.97);
+        background: rgba(31,20,22,0.97);
         padding: 20px 24px;
         border-bottom: 1px solid var(--borde);
         gap: 18px;
@@ -2193,7 +2195,7 @@
           categoria: 'web',
           tags: ['HTML / CSS / JS', 'Leaflet', 'iCal', 'Netlify Functions', 'PHP', 'Node', 'Python'],
           github_url: 'https://github.com/martinavirgilli/carpe-diem-pinamar',
-          preview_url: 'https://carpediem-pinamar.netlify.app',
+          preview_url: 'https://carpediempinamar.netlify.app',
           imagen: 'assets/portfolio/carpe-diem-pinamar.png'
         }
       ];
