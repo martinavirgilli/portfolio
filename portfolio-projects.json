@@ -3,16 +3,16 @@
     {
       "id": "refugio-del-mar",
       "titulo": "Refugio del Mar",
-      "descripcion": "Un animal en la calle no compite por atención: compite por que alguien sepa que existe. Refugio del Mar es una web de adopción y, sobre la misma base de datos, el sistema con el que el refugio se organiza — catálogo público para quien busca adoptar, panel interno para fichas, visitas, adopciones y voluntarios. Refugio ficticio inspirado en Pinamar, con datos de muestra.",
+      "descripcion": "Aplicación web full-stack de adopción y gestión para un refugio de animales ficticio inspirado en Pinamar, con datos de muestra. Resuelve dos necesidades sobre la misma base de datos: un catálogo público donde los adoptantes ven a los animales disponibles y piden conocerlos, y un panel administrativo donde el equipo gestiona fichas, visitas, adopciones y voluntarios, en reemplazo del cuaderno y el grupo de WhatsApp con los que suelen organizarse los refugios chicos. Frontend en React 19 con Vite y Tailwind CSS, backend en Django REST Framework con autenticación JWT, base de datos PostgreSQL y despliegue con Docker.",
       "tipo": "Full Stack",
       "categoria": "web",
       "tags": ["React", "Vite", "Tailwind CSS", "Django", "Django REST Framework", "JWT", "PostgreSQL", "Docker"],
       "destacados": [
-        "Permisos validados siempre en el <strong>backend</strong>: la ficha de un animal adoptado responde 404 a quien no sea del refugio, regla que vive en el queryset. 44 tests lo fijan.",
-        "<strong>Accesibilidad AA</strong> medida con la fórmula de luminancia de WCAG — no estimada a ojo —, con carrusel y modales navegables por teclado.",
-        "<strong>Etapa de vida</strong> en vez de edad en años: un animal rescatado no tiene fecha de nacimiento. Migración de datos reversible escrita a mano."
+        "Permisos de administración validados siempre en el <strong>backend</strong>, no solo ocultos en la interfaz: la ficha de un animal adoptado devuelve 404 a quien no sea del refugio. Cubierto por 44 tests automatizados.",
+        "<strong>Accesibilidad AA</strong> verificada con la fórmula de contraste de WCAG, carrusel de fotos y modales navegables por teclado.",
+        "<strong>Etapa de vida</strong> en lugar de edad en años, porque un animal rescatado no tiene fecha de nacimiento conocida. Migración de datos reversible escrita a mano."
       ],
-      "nota": "La v2 la desarrollé usando Claude Code como par de programación, dirigiendo el alcance por fases y pidiendo un test detrás de cada regla.",
+      "nota": "Desarrollado con Claude Code como asistente de programación, con revisión de cada cambio y un test por cada regla de negocio implementada.",
       "github_url": "https://github.com/martinavirgilli/RefugioDelMar",
       "preview_url": "https://refugio-del-mar.netlify.app",
       "imagen": "assets/portfolio/refugio-del-mar.jpg",
