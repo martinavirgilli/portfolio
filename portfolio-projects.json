@@ -2,17 +2,17 @@
   "portfolio": [
     {
       "id": "refugio-del-mar",
-      "titulo": "Refugio del Mar",
-      "descripcion": "Aplicación web full-stack de adopción y gestión para un refugio de animales ficticio inspirado en Pinamar, con datos de muestra. Resuelve dos necesidades sobre la misma base de datos: un catálogo público donde los adoptantes ven a los animales disponibles y piden conocerlos, y un panel administrativo donde el equipo gestiona fichas, visitas, adopciones y voluntarios, en reemplazo del cuaderno y el grupo de WhatsApp con los que suelen organizarse los refugios chicos. Frontend en React 19 con Vite y Tailwind CSS, backend en Django REST Framework con autenticación JWT, base de datos PostgreSQL y despliegue con Docker.",
+      "titulo": {
+        "es": "Refugio del Mar",
+        "en": "Refugio del Mar"
+      },
+      "descripcion": {
+        "es": "Aplicación web full-stack de adopción y gestión para un refugio de animales ficticio inspirado en Pinamar, con datos de muestra. Resuelve dos necesidades sobre la misma base de datos: un catálogo público donde los adoptantes ven a los animales disponibles y piden conocerlos, y un panel administrativo donde el equipo gestiona fichas, visitas, adopciones y voluntarios, en reemplazo del cuaderno y el grupo de WhatsApp con los que suelen organizarse los refugios chicos. Frontend en React 19 con Vite y Tailwind CSS, backend en Django REST Framework con autenticación JWT, base de datos PostgreSQL y despliegue con Docker. Desarrollado con Claude Code como asistente de programación.",
+        "en": "Full-stack web application for adoption and shelter management, built for a fictional shelter inspired by Pinamar, with sample data. It solves two needs on the same database: a public catalog where adopters can see available animals and request to meet them, and an admin panel where staff manage profiles, visits, adoptions and volunteers — replacing the notebook and WhatsApp group that small shelters usually rely on. Frontend in React 19 with Vite and Tailwind CSS, backend in Django REST Framework with JWT authentication, PostgreSQL database and Docker deployment. Built with Claude Code as a pair-programming assistant."
+      },
       "tipo": "Full Stack",
       "categoria": "web",
       "tags": ["React", "Vite", "Tailwind CSS", "Django", "Django REST Framework", "JWT", "PostgreSQL", "Docker"],
-      "destacados": [
-        "Permisos de administración validados siempre en el <strong>backend</strong>, no solo ocultos en la interfaz: la ficha de un animal adoptado devuelve 404 a quien no sea del refugio. Cubierto por 44 tests automatizados.",
-        "<strong>Accesibilidad AA</strong> verificada con la fórmula de contraste de WCAG, carrusel de fotos y modales navegables por teclado.",
-        "<strong>Etapa de vida</strong> en lugar de edad en años, porque un animal rescatado no tiene fecha de nacimiento conocida. Migración de datos reversible escrita a mano."
-      ],
-      "nota": "Desarrollado con Claude Code como asistente de programación, con revisión de cada cambio y un test por cada regla de negocio implementada.",
       "github_url": "https://github.com/martinavirgilli/RefugioDelMar",
       "preview_url": "https://refugio-del-mar.netlify.app",
       "imagen": "assets/portfolio/refugio-del-mar.jpg",
@@ -20,8 +20,14 @@
     },
     {
       "id": "carpe-diem-pinamar",
-      "titulo": "Carpe Diem — Alquileres Pinamar",
-      "descripcion": "Sitio promocional de alquileres temporarios: cuatro departamentos con ficha propia, galería, mapa de ubicación aproximada y calendario de disponibilidad real, sincronizado por iCal con Google Calendar, Airbnb y Booking. La consulta abre WhatsApp con las fechas elegidas ya escritas en el mensaje. Hecho sin frameworks ni compilación, con una función serverless para el calendario, y todo el contenido en un único archivo de datos para que lo mantenga alguien que no programa.",
+      "titulo": {
+        "es": "Carpe Diem — Alquileres Pinamar",
+        "en": "Carpe Diem — Pinamar Rentals"
+      },
+      "descripcion": {
+        "es": "Sitio promocional de alquileres temporarios: cuatro departamentos con ficha propia, galería, mapa de ubicación aproximada y calendario de disponibilidad real, sincronizado por iCal con Google Calendar, Airbnb y Booking. La consulta abre WhatsApp con las fechas elegidas ya escritas en el mensaje. Hecho sin frameworks ni compilación, con una función serverless para el calendario, y todo el contenido en un único archivo de datos para que lo mantenga alguien que no programa. El calendario degrada en tres niveles para no quedar nunca vacío ni roto, y el sitio cuida accesibilidad y SEO: HTML semántico, foco visible, meta tags y datos estructurados.",
+        "en": "Promotional site for short-term rentals: four apartments with their own profile, photo gallery, approximate location map and a real availability calendar, synced via iCal with Google Calendar, Airbnb and Booking. Inquiries open WhatsApp with the chosen dates already written into the message. Built without frameworks or a build step, with a serverless function for the calendar, and all content in a single data file so someone who doesn't code can maintain it. The calendar degrades across three levels so it's never empty or broken, and the site takes accessibility and SEO seriously: semantic HTML, visible focus, meta tags and structured data."
+      },
       "tipo": "Web",
       "categoria": "web",
       "tags": ["HTML / CSS / JS", "Leaflet", "iCal", "Netlify Functions", "PHP", "Node", "Python"],

@@ -1386,11 +1386,11 @@
 
           <div class="stack-items">
             <span class="stack-item-highlight">Python</span>
-            <span class="stack-item-highlight">Automatizaciones</span>
+            <span class="stack-item-highlight" data-i18n="stack.item.automatizaciones">Automatizaciones</span>
             <span class="stack-item-highlight">Claude API</span>
             <span class="stack-item-highlight">OpenAI API</span>
             <span class="stack-item-highlight">Scripting</span>
-            <span class="stack-item-highlight">Integraciones</span>
+            <span class="stack-item-highlight" data-i18n="stack.item.integraciones">Integraciones</span>
           </div>
 
           <p class="stack-nota" data-i18n="stack.nota.auto">↑ Foco principal de aprendizaje activo</p>
@@ -1481,9 +1481,9 @@
           </div>
           <div class="stack-items">
             <span class="stack-item">MySQL</span>
-            <span class="stack-item">Análisis SQL</span>
-            <span class="stack-item">Optimización</span>
-            <span class="stack-item">Reportes</span>
+            <span class="stack-item" data-i18n="stack.item.analisissql">Análisis SQL</span>
+            <span class="stack-item" data-i18n="stack.item.optimizacion">Optimización</span>
+            <span class="stack-item" data-i18n="stack.item.reportes">Reportes</span>
           </div>
         </div>
 
@@ -1547,10 +1547,10 @@
               <span class="tag">MySQL</span>
               <span class="tag">SQL Server</span>
               <span class="tag">Stored Procedures</span>
-              <span class="tag">Análisis de datos</span>
-              <span class="tag">Automatización</span>
+              <span class="tag" data-i18n="exp.1.tag.datos">Análisis de datos</span>
+              <span class="tag" data-i18n="exp.1.tag.automatizacion">Automatización</span>
               <span class="tag">OpenSpec</span>
-              <span class="tag">Soporte funcional</span>
+              <span class="tag" data-i18n="exp.1.tag.soporte">Soporte funcional</span>
             </div>
           </div>
         </div>
@@ -1875,6 +1875,11 @@
         'stack.cat2':          'Backend',
         'stack.cat3':          'Bases de datos',
         'stack.cat4':          'Herramientas',
+        'stack.item.automatizaciones': 'Automatizaciones',
+        'stack.item.analisissql':      'Análisis SQL',
+        'stack.item.optimizacion':     'Optimización',
+        'stack.item.reportes':         'Reportes',
+        'stack.item.integraciones':    'Integraciones',
 
         /* Proyectos */
         'proyectos.tag':                  'Proyectos',
@@ -1895,6 +1900,9 @@
         'exp.1.periodo': '2024 — Presente',
         'exp.1.empresa': 'Cooperativa Telefónica de Pinamar Ltda. (TELPIN)',
         'exp.1.desc':    '<li><span>Desarrollo, optimización y mantenimiento de consultas SQL (MySQL y SQL Server) y depuración de stored procedures para JSAT, sistema de gestión utilizado por múltiples cooperativas de Argentina.</span></li><li><span>Análisis de datos y generación de reportes para distintas áreas, contribuyendo a la integridad de la información y a la eficiencia operativa.</span></li><li><span>Implementación progresiva de inteligencia artificial en el equipo para resolver incidencias y acelerar el desarrollo, aplicando desarrollo guiado por especificaciones (Spec-Driven Development) con OpenSpec y asistentes de IA.</span></li><li><span>Desarrollo de automatizaciones que mejoran el sistema de gestión y reducen tareas manuales.</span></li><li><span>Configuración de clientes, armado de workflows y soporte funcional a usuarios de distintas cooperativas.</span></li>',
+        'exp.1.tag.datos':          'Análisis de datos',
+        'exp.1.tag.automatizacion': 'Automatización',
+        'exp.1.tag.soporte':        'Soporte funcional',
         'exp.2.rol':     'Proyecto Final — Desarrolladora Full Stack',
         'exp.2.periodo': '2025 — 2026',
         'exp.2.empresa': 'Universidad Argentina de la Empresa (UADE)',
@@ -1986,6 +1994,11 @@
         'stack.cat2':          'Backend',
         'stack.cat3':          'Databases',
         'stack.cat4':          'Tools',
+        'stack.item.automatizaciones': 'Automation',
+        'stack.item.analisissql':      'SQL Analysis',
+        'stack.item.optimizacion':     'Optimization',
+        'stack.item.reportes':         'Reports',
+        'stack.item.integraciones':    'Integrations',
 
         /* Projects */
         'proyectos.tag':                  'Projects',
@@ -2006,6 +2019,9 @@
         'exp.1.periodo': '2024 — Present',
         'exp.1.empresa': 'Cooperativa Telefónica de Pinamar Ltda. (TELPIN)',
         'exp.1.desc':    '<li><span>Development, optimization and maintenance of SQL queries (MySQL and SQL Server) and debugging of stored procedures for JSAT, a management system used by multiple cooperatives across Argentina.</span></li><li><span>Data analysis and report generation for different departments, contributing to data integrity and operational efficiency.</span></li><li><span>Progressive adoption of AI within the team to resolve incidents and speed up development, applying Spec-Driven Development with OpenSpec and AI assistants.</span></li><li><span>Development of automations that improve the management system and reduce manual tasks.</span></li><li><span>Client configuration, workflow building, and functional support for users across different cooperatives.</span></li>',
+        'exp.1.tag.datos':          'Data Analysis',
+        'exp.1.tag.automatizacion': 'Automation',
+        'exp.1.tag.soporte':        'Functional Support',
         'exp.2.rol':     'University Final Project — Full Stack Developer',
         'exp.2.periodo': '2025 — 2026',
         'exp.2.empresa': 'Universidad Argentina de la Empresa (UADE)',
@@ -2171,14 +2187,20 @@
       /* Generar HTML de cada tarjeta */
       grid.innerHTML = filtrados.map(p => {
 
+        /* Título y descripción: vienen como { es, en } para que la tarjeta
+           siga el idioma activo. Si algún proyecto trae un string plano
+           (sin traducir todavía), se usa tal cual en los dos idiomas. */
+        const titulo      = (typeof p.titulo === 'object')      ? (p.titulo[idiomaActual]      ?? p.titulo.es)      : p.titulo;
+        const descripcion = (typeof p.descripcion === 'object') ? (p.descripcion[idiomaActual] ?? p.descripcion.es) : p.descripcion;
+
         /* Imagen o placeholder con el nombre del proyecto.
            Si hay imagen pero el archivo no existe, el onerror oculta el <img>
            y muestra el <div> hermano que está oculto por defecto. */
         const imgHTML = p.imagen
-          ? `<img class="proyecto-img" src="${p.imagen}" alt="${p.titulo}"
+          ? `<img class="proyecto-img" src="${p.imagen}" alt="${titulo}"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-             <div class="proyecto-img-placeholder" style="display:none"><span>// ${p.titulo}</span></div>`
-          : `<div class="proyecto-img-placeholder"><span>// ${p.titulo}</span></div>`;
+             <div class="proyecto-img-placeholder" style="display:none"><span>// ${titulo}</span></div>`
+          : `<div class="proyecto-img-placeholder"><span>// ${titulo}</span></div>`;
 
         /* Chips de tecnologías */
         const tagsHTML = (p.tags || [])
@@ -2223,8 +2245,8 @@
             ${imgHTML}
             <div class="proyecto-body">
               <div class="proyecto-tipo">${p.tipo || p.categoria || ''}</div>
-              <h3 class="proyecto-titulo">${p.titulo}</h3>
-              <p class="proyecto-descripcion">${p.descripcion}</p>
+              <h3 class="proyecto-titulo">${titulo}</h3>
+              <p class="proyecto-descripcion">${descripcion}</p>
               <div class="proyecto-tags">${tagsHTML}</div>
               ${destacadosHTML}
               ${notaHTML}
@@ -2247,25 +2269,31 @@
       const fallback = [
         {
           id: 'refugio-del-mar',
-          titulo: 'Refugio del Mar',
-          descripcion: 'Aplicación web full-stack de adopción y gestión para un refugio de animales ficticio inspirado en Pinamar, con datos de muestra. Resuelve dos necesidades sobre la misma base de datos: un catálogo público donde los adoptantes ven a los animales disponibles y piden conocerlos, y un panel administrativo donde el equipo gestiona fichas, visitas, adopciones y voluntarios, en reemplazo del cuaderno y el grupo de WhatsApp con los que suelen organizarse los refugios chicos. Frontend en React 19 con Vite y Tailwind CSS, backend en Django REST Framework con autenticación JWT, base de datos PostgreSQL y despliegue con Docker.',
+          titulo: {
+            es: 'Refugio del Mar',
+            en: 'Refugio del Mar'
+          },
+          descripcion: {
+            es: 'Aplicación web full-stack de adopción y gestión para un refugio de animales ficticio inspirado en Pinamar, con datos de muestra. Resuelve dos necesidades sobre la misma base de datos: un catálogo público donde los adoptantes ven a los animales disponibles y piden conocerlos, y un panel administrativo donde el equipo gestiona fichas, visitas, adopciones y voluntarios, en reemplazo del cuaderno y el grupo de WhatsApp con los que suelen organizarse los refugios chicos. Frontend en React 19 con Vite y Tailwind CSS, backend en Django REST Framework con autenticación JWT, base de datos PostgreSQL y despliegue con Docker. Desarrollado con Claude Code como asistente de programación.',
+            en: 'Full-stack web application for adoption and shelter management, built for a fictional shelter inspired by Pinamar, with sample data. It solves two needs on the same database: a public catalog where adopters can see available animals and request to meet them, and an admin panel where staff manage profiles, visits, adoptions and volunteers — replacing the notebook and WhatsApp group that small shelters usually rely on. Frontend in React 19 with Vite and Tailwind CSS, backend in Django REST Framework with JWT authentication, PostgreSQL database and Docker deployment. Built with Claude Code as a pair-programming assistant.'
+          },
           tipo: 'Full Stack',
           categoria: 'web',
           tags: ['React', 'Vite', 'Tailwind CSS', 'Django', 'Django REST Framework', 'JWT', 'PostgreSQL', 'Docker'],
-          destacados: [
-            'Permisos de administración validados siempre en el <strong>backend</strong>, no solo ocultos en la interfaz: la ficha de un animal adoptado devuelve 404 a quien no sea del refugio. Cubierto por 44 tests automatizados.',
-            '<strong>Accesibilidad AA</strong> verificada con la fórmula de contraste de WCAG, carrusel de fotos y modales navegables por teclado.',
-            '<strong>Etapa de vida</strong> en lugar de edad en años, porque un animal rescatado no tiene fecha de nacimiento conocida. Migración de datos reversible escrita a mano.'
-          ],
-          nota: 'Desarrollado con Claude Code como asistente de programación, con revisión de cada cambio y un test por cada regla de negocio implementada.',
           github_url: 'https://github.com/martinavirgilli/RefugioDelMar',
           preview_url: 'https://refugio-del-mar.netlify.app',
           imagen: 'assets/portfolio/refugio-del-mar.jpg'
         },
         {
           id: 'carpe-diem-pinamar',
-          titulo: 'Carpe Diem — Alquileres Pinamar',
-          descripcion: 'Sitio promocional de alquileres temporarios: cuatro departamentos con ficha propia, galería, mapa de ubicación aproximada y calendario de disponibilidad sincronizado por iCal con Google Calendar, Airbnb y Booking. La consulta abre WhatsApp con las fechas elegidas ya escritas. Sin frameworks ni compilación, con una función serverless para el calendario.',
+          titulo: {
+            es: 'Carpe Diem — Alquileres Pinamar',
+            en: 'Carpe Diem — Pinamar Rentals'
+          },
+          descripcion: {
+            es: 'Sitio promocional de alquileres temporarios: cuatro departamentos con ficha propia, galería, mapa de ubicación aproximada y calendario de disponibilidad real, sincronizado por iCal con Google Calendar, Airbnb y Booking. La consulta abre WhatsApp con las fechas elegidas ya escritas en el mensaje. Hecho sin frameworks ni compilación, con una función serverless para el calendario, y todo el contenido en un único archivo de datos para que lo mantenga alguien que no programa. El calendario degrada en tres niveles para no quedar nunca vacío ni roto, y el sitio cuida accesibilidad y SEO: HTML semántico, foco visible, meta tags y datos estructurados.',
+            en: 'Promotional site for short-term rentals: four apartments with their own profile, photo gallery, approximate location map and a real availability calendar, synced via iCal with Google Calendar, Airbnb and Booking. Inquiries open WhatsApp with the chosen dates already written into the message. Built without frameworks or a build step, with a serverless function for the calendar, and all content in a single data file so someone who doesn\'t code can maintain it. The calendar degrades across three levels so it\'s never empty or broken, and the site takes accessibility and SEO seriously: semantic HTML, visible focus, meta tags and structured data.'
+          },
           tipo: 'Web',
           categoria: 'web',
           tags: ['HTML / CSS / JS', 'Leaflet', 'iCal', 'Netlify Functions', 'PHP', 'Node', 'Python'],
