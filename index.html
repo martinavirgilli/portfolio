@@ -737,6 +737,37 @@
       margin-bottom: 14px;
     }
     .proyecto-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 16px; }
+
+    /* Destacados — lista corta de lo que diferencia al proyecto, opcional por proyecto */
+    .proyecto-destacados { list-style: none; margin-bottom: 16px; display: flex; flex-direction: column; gap: 7px; }
+    .proyecto-destacados li {
+      display: flex;
+      gap: 8px;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--gris);
+    }
+    .proyecto-destacados li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--acento-cobre);
+      margin-top: 7px;
+    }
+    .proyecto-destacados strong { color: var(--blanco); font-weight: 600; }
+
+    /* Nota al pie de la tarjeta — una línea breve, opcional por proyecto */
+    .proyecto-nota {
+      font-size: 0.78rem;
+      font-style: italic;
+      color: var(--acento-claro);
+      opacity: 0.85;
+      padding-top: 12px;
+      margin-bottom: 14px;
+      border-top: 1px solid var(--borde);
+    }
+
     .proyecto-links { display: flex; gap: 8px; margin-top: auto; }
     .proyecto-link {
       display: inline-flex;
@@ -1079,8 +1110,8 @@
         <ul class="nav-links" id="navLinks">
           <li><a href="#about"       data-i18n="nav.about">Sobre mí</a></li>
           <li><a href="#stack"       data-i18n="nav.stack">Stack</a></li>
-          <li><a href="#proyectos"   data-i18n="nav.proyectos">Proyectos</a></li>
           <li><a href="#experiencia" data-i18n="nav.experiencia">Experiencia</a></li>
+          <li><a href="#proyectos"   data-i18n="nav.proyectos">Proyectos</a></li>
           <li><a href="#educacion"   data-i18n="nav.educacion">Educación</a></li>
           <li class="nav-contacto-mobile"><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
@@ -1458,39 +1489,6 @@
 
 
   <!-- ════════════════════════════════════════════════════════════════════════
-       PROYECTOS
-       ════════════════════════════════════════════════════════════════════════ -->
-  <section id="proyectos">
-    <div class="container">
-
-      <div class="seccion-header fade-in">
-        <span class="tag" data-i18n="proyectos.tag">Proyectos</span>
-        <h2 class="seccion-titulo" data-i18n="proyectos.titulo">
-          Cosas que <span class="texto-gradiente">construí</span>
-        </h2>
-        <p class="seccion-subtitulo" data-i18n="proyectos.subtitulo">
-          Proyectos académicos y personales. Filtrar por tipo.
-        </p>
-      </div>
-
-      <div class="proyectos-filtros fade-in">
-        <button class="filtro-btn activo" data-categoria="todos"
-                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.todos">Todos</button>
-        <button class="filtro-btn" data-categoria="web"
-                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.web">Web / Full Stack</button>
-        <button class="filtro-btn" data-categoria="automatizacion"
-                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.automatizacion">Automatización</button>
-        <button class="filtro-btn" data-categoria="bot"
-                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.bot">Bot</button>
-      </div>
-
-      <div class="proyectos-grid" id="proyectosGrid"></div>
-
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════════════════════════════
        EXPERIENCIA PROFESIONAL
        ════════════════════════════════════════════════════════════════════════ -->
   <section id="experiencia">
@@ -1574,6 +1572,39 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PROYECTOS
+       ════════════════════════════════════════════════════════════════════════ -->
+  <section id="proyectos">
+    <div class="container">
+
+      <div class="seccion-header fade-in">
+        <span class="tag" data-i18n="proyectos.tag">Proyectos</span>
+        <h2 class="seccion-titulo" data-i18n="proyectos.titulo">
+          Cosas que <span class="texto-gradiente">construí</span>
+        </h2>
+        <p class="seccion-subtitulo" data-i18n="proyectos.subtitulo">
+          Proyectos académicos y personales. Filtrar por tipo.
+        </p>
+      </div>
+
+      <div class="proyectos-filtros fade-in">
+        <button class="filtro-btn activo" data-categoria="todos"
+                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.todos">Todos</button>
+        <button class="filtro-btn" data-categoria="web"
+                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.web">Web / Full Stack</button>
+        <button class="filtro-btn" data-categoria="automatizacion"
+                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.automatizacion">Automatización</button>
+        <button class="filtro-btn" data-categoria="bot"
+                onclick="filtrarProyectos(this)" data-i18n="proyectos.filtro.bot">Bot</button>
+      </div>
+
+      <div class="proyectos-grid" id="proyectosGrid"></div>
+
     </div>
   </section>
 
@@ -2129,6 +2160,17 @@
           .map(tag => `<span class="tag">${tag}</span>`)
           .join('');
 
+        /* Destacados — 2 o 3 líneas opcionales con lo que diferencia al proyecto.
+           Cada string puede traer <strong> para resaltar una palabra clave. */
+        const destacadosHTML = (p.destacados || []).length
+          ? `<ul class="proyecto-destacados">${p.destacados.map(d => `<li><span>${d}</span></li>`).join('')}</ul>`
+          : '';
+
+        /* Nota al pie — una línea breve y opcional, ej: cómo se construyó el proyecto */
+        const notaHTML = p.nota
+          ? `<p class="proyecto-nota">${p.nota}</p>`
+          : '';
+
         /* Botón GitHub */
         const githubBtn = p.github_url
           ? `<a href="${p.github_url}" target="_blank" rel="noopener" class="proyecto-link">
@@ -2159,6 +2201,8 @@
               <h3 class="proyecto-titulo">${p.titulo}</h3>
               <p class="proyecto-descripcion">${p.descripcion}</p>
               <div class="proyecto-tags">${tagsHTML}</div>
+              ${destacadosHTML}
+              ${notaHTML}
               <div class="proyecto-links">${githubBtn}${demoBtn}</div>
             </div>
           </div>`;
@@ -2179,10 +2223,16 @@
         {
           id: 'refugio-del-mar',
           titulo: 'Refugio del Mar',
-          descripcion: 'Aplicación full stack para un refugio de animales: el catálogo público donde alguien pide conocer a un animal, y el panel interno donde el equipo gestiona fichas, visitas, adopciones y voluntarios. React 19 con Vite y Tailwind, backend en Django REST con JWT y PostgreSQL.',
+          descripcion: 'Un animal en la calle no compite por atención: compite por que alguien sepa que existe. Refugio del Mar es una web de adopción y, sobre la misma base de datos, el sistema con el que el refugio se organiza — catálogo público para quien busca adoptar, panel interno para fichas, visitas, adopciones y voluntarios. Refugio ficticio inspirado en Pinamar, con datos de muestra.',
           tipo: 'Full Stack',
           categoria: 'web',
-          tags: ['React', 'Vite', 'Tailwind CSS', 'Django', 'Django REST Framework', 'JWT', 'PostgreSQL'],
+          tags: ['React', 'Vite', 'Tailwind CSS', 'Django', 'Django REST Framework', 'JWT', 'PostgreSQL', 'Docker'],
+          destacados: [
+            'Permisos validados siempre en el <strong>backend</strong>: la ficha de un animal adoptado responde 404 a quien no sea del refugio, regla que vive en el queryset. 44 tests lo fijan.',
+            '<strong>Accesibilidad AA</strong> medida con la fórmula de luminancia de WCAG — no estimada a ojo —, con carrusel y modales navegables por teclado.',
+            '<strong>Etapa de vida</strong> en vez de edad en años: un animal rescatado no tiene fecha de nacimiento. Migración de datos reversible escrita a mano.'
+          ],
+          nota: 'La v2 la desarrollé usando Claude Code como par de programación, dirigiendo el alcance por fases y pidiendo un test detrás de cada regla.',
           github_url: 'https://github.com/martinavirgilli/RefugioDelMar',
           preview_url: 'https://refugio-del-mar.netlify.app',
           imagen: 'assets/portfolio/refugio-del-mar.jpg'

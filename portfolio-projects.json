@@ -3,10 +3,16 @@
     {
       "id": "refugio-del-mar",
       "titulo": "Refugio del Mar",
-      "descripcion": "Aplicación full stack para un refugio de animales, con dos caras: el catálogo público donde alguien se enamora de un animal y pide conocerlo, y el panel interno donde el equipo gestiona fichas, visitas, adopciones y voluntarios. Frontend en React 19 con Vite y Tailwind, backend en Django REST con autenticación JWT y PostgreSQL. Permisos validados siempre en el servidor, con tests que lo fijan, y accesibilidad AA verificada.",
+      "descripcion": "Un animal en la calle no compite por atención: compite por que alguien sepa que existe. Refugio del Mar es una web de adopción y, sobre la misma base de datos, el sistema con el que el refugio se organiza — catálogo público para quien busca adoptar, panel interno para fichas, visitas, adopciones y voluntarios. Refugio ficticio inspirado en Pinamar, con datos de muestra.",
       "tipo": "Full Stack",
       "categoria": "web",
-      "tags": ["React", "Vite", "Tailwind CSS", "Django", "Django REST Framework", "JWT", "PostgreSQL", "Netlify", "Render"],
+      "tags": ["React", "Vite", "Tailwind CSS", "Django", "Django REST Framework", "JWT", "PostgreSQL", "Docker"],
+      "destacados": [
+        "Permisos validados siempre en el <strong>backend</strong>: la ficha de un animal adoptado responde 404 a quien no sea del refugio, regla que vive en el queryset. 44 tests lo fijan.",
+        "<strong>Accesibilidad AA</strong> medida con la fórmula de luminancia de WCAG — no estimada a ojo —, con carrusel y modales navegables por teclado.",
+        "<strong>Etapa de vida</strong> en vez de edad en años: un animal rescatado no tiene fecha de nacimiento. Migración de datos reversible escrita a mano."
+      ],
+      "nota": "La v2 la desarrollé usando Claude Code como par de programación, dirigiendo el alcance por fases y pidiendo un test detrás de cada regla.",
       "github_url": "https://github.com/martinavirgilli/RefugioDelMar",
       "preview_url": "https://refugio-del-mar.netlify.app",
       "imagen": "assets/portfolio/refugio-del-mar.jpg",
